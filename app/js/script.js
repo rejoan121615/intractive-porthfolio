@@ -45,7 +45,7 @@ function startNameAnimation() {
         y: -300,
         opacity: 0,
         stagger: {
-            amount: 0.8,
+            amount: 1,
         }
     })
     return nameTl;
