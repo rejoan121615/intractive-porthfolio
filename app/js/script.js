@@ -36,9 +36,11 @@ gsap.timeline().to("#intro .cover", {
 function startNameAnimation() {
     let nameTl = gsap.timeline()
     nameTl.to("body", {
-        overflowY: 'initial'
+        overflowY: 'initial',
+        duration: 0,
     }).to("#name", {
-        display: 'flex'
+        display: 'flex',
+        duration: 0
     }).from(gsap.utils.toArray(['.line_two .char', '.line_one .char']), {
         y: -300,
         opacity: 0,
