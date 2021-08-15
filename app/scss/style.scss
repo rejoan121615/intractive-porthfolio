@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 // responsive breakpoints
@@ -81,14 +82,27 @@ $heading: "Montserrat", sans-serif;
     @at-root #image {
         width: 100vw;
         height: 100%;
+        margin-top: -21vh;
         // @extend .centerF;
-        margin-bottom: 200px;
         .img__container {
             text-align: center;
             margin: 0px auto 0px auto;
+            width: 25px;
+            height: 25px;
+            background-color: black;
+            animation: 0.5s blink linear infinite alternate both;
             img {
-                margin-top: 25px;
+                width: 0%;
                 display: none;
+            }
+        }
+        // blink animation 
+        @keyframes blink {
+            from {
+                background-color: black;
+            }
+            to {
+                background-color: transparent;
             }
         }
     }
