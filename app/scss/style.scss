@@ -4,6 +4,20 @@
     box-sizing: border-box;
 }
 
+// responsive breakpoints
+$sm: 540px;
+$md: 720px;
+$lg: 960px;
+$xl: 1140px;
+$xxl: 1320px;
+
+// media query
+@mixin resp($width) {
+    @media only screen and (min-width: $width) {
+        @content;
+    }
+}
+
 body {
     overflow: hidden;
 }
@@ -41,14 +55,19 @@ $heading: "Montserrat", sans-serif;
     @extend .centerF;
     width: 100%;
     height: 100vh;
-    flex-flow: column wrap;
+    flex-direction: column;
     .texts {
         @extend .centerF;
         flex-direction: column;
         h1 {
             font-family: $heading;
-            font-size: 17rem;
-            line-height: 15.8rem;
+            //   font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+            font-size: calc(
+                75px + (220 - 75) * ((100vw - 320px) / (1600 - 320))
+            );
+            line-height: calc(
+                68px + (200 - 68) * ((100vw - 320px) / (1600 - 320))
+            );
             .word {
                 display: flex;
                 flex-flow: row wrap;
@@ -59,21 +78,18 @@ $heading: "Montserrat", sans-serif;
         }
     }
     // images
-    .img_dot {
-        width: 25px;
-        height: 25px;
-        background-color: black;
-        border-radius: 50%;
-        // animation: blink 3s infinite;
-        animation: blink 0.7s linear 1s infinite alternate both;
-        margin-top: 200px;
-    }
-    @keyframes blink {
-        from {
-            background-color: transparent;
-        }
-        to {
-            background-color: black;
+    @at-root #image {
+        width: 100vw;
+        height: 100%;
+        // @extend .centerF;
+        margin-bottom: 200px;
+        .img__container {
+            text-align: center;
+            margin: 0px auto 0px auto;
+            img {
+                margin-top: 25px;
+                display: none;
+            }
         }
     }
 }
