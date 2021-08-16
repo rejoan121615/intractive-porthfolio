@@ -93,14 +93,15 @@ $heading: "Montserrat", sans-serif;
             height: 100%;
             .blink {
                 display: inline-block;
+                display: none;
                 width: 25px;
                 height: 25px;
                 background-color: black;
                 animation: 0.5s blink linear infinite alternate both;
             }
             img {
-                width: 0%;
-                display: none;
+                width: 100%;
+                // display: none;
             }
         }
         // blink animation
