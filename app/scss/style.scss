@@ -19,9 +19,9 @@ $xxl: 1320px;
     }
 }
 
-body {
-    overflow: hidden;
-}
+// body {
+//     overflow: hidden;
+// }
 
 // fonts
 $heading: "Montserrat", sans-serif;
@@ -32,6 +32,28 @@ $heading: "Montserrat", sans-serif;
     align-items: center;
     justify-content: center;
 }
+// -------------- main title text style --------------- 
+.main__title {
+        @extend .centerF;
+        flex-direction: column;
+        h1 {
+            font-family: $heading;
+            //   font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+            font-size: calc(
+                75px + (220 - 75) * ((100vw - 320px) / (1600 - 320))
+            );
+            line-height: calc(
+                68px + (200 - 68) * ((100vw - 320px) / (1600 - 320))
+            );
+            .word {
+                display: flex;
+                flex-flow: row wrap;
+                .chars {
+                    display: block;
+                }
+            }
+        }
+    }
 // intro section
 #intro {
     width: 100vw;
@@ -58,45 +80,30 @@ $heading: "Montserrat", sans-serif;
     height: 100vh;
     flex-direction: column;
     .texts {
-        @extend .centerF;
-        flex-direction: column;
-        h1 {
-            font-family: $heading;
-            //   font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
-            font-size: calc(
-                75px + (220 - 75) * ((100vw - 320px) / (1600 - 320))
-            );
-            line-height: calc(
-                68px + (200 - 68) * ((100vw - 320px) / (1600 - 320))
-            );
-            .word {
-                display: flex;
-                flex-flow: row wrap;
-                .chars {
-                    display: block;
-                }
-            }
-        }
+       @extend .main__title;
     }
     // images
     @at-root #image {
         width: 100vw;
-        height: 100%;
         margin-top: -21vh;
         // @extend .centerF;
         .img__container {
             text-align: center;
-            margin: 0px auto 0px auto;
-            width: 25px;
-            height: 25px;
-            background-color: black;
-            animation: 0.5s blink linear infinite alternate both;
+            width: 100%;
+            height: 100%;
+            .blink {
+                display: inline-block;
+                width: 25px;
+                height: 25px;
+                background-color: black;
+                animation: 0.5s blink linear infinite alternate both;
+            }
             img {
                 width: 0%;
                 display: none;
             }
         }
-        // blink animation 
+        // blink animation
         @keyframes blink {
             from {
                 background-color: black;
@@ -106,4 +113,63 @@ $heading: "Montserrat", sans-serif;
             }
         }
     }
+}
+//  ------------------- image section --------------------- 
+#image {
+    width: 100%;
+    height: 100vh;
+}
+//--------------------- front end -------------------- > 
+#front__end {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+
+    //------------------ bg svg ------------- 
+    .bg__container {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: 200;
+        width: 100%;
+        overflow: hidden;
+        // height: 70vh;
+        svg {
+            // width: 150%;
+            // margin-left: -26%;
+            #path {
+                // transform-origin: center;
+                // transform: rotate(360deg);
+                // animation: rotate;
+                // animation-duration: 25s;
+            }
+            // .rotate {
+            //     animation: rotate;
+            //     animation-duration: 25s;
+            // }
+            // @keyframes rotate {
+            //     from{
+            //         transform: rotate(360deg);
+            //     }
+            //     to {
+            //         transform: rotate(20deg);
+            //     }
+            // }
+        }
+    }
+    //  --------------- texts -------------------
+    #text__container {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: 100;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .texts {
+            @extend .main__title;
+        }
+    } 
 }

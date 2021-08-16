@@ -12,37 +12,39 @@ gsap.defaults({
     duration: 1,
 });
 // animation
-
-// gsap.timeline()
-//     .to("#intro .cover", {
-//         x: 0,
-//         stagger: {
-//             amount: 1.3,
-//         },
-//         delay: 0.5,
-//         duration: 1.3,
-//     })
-//     .to("#intro .line", {
-//         height: 0,
-//         delay: 0.4,
-//         stagger: {
-//             amount: 0.4,
-//             from: "end",
-//         },
-//         onComplete: function () {
-//             document.querySelector("#intro").remove();
-//             startNameAnimation();
-//         },
-//     });
-
+gsap.set("#full__container", {
+    overflow: 'hidden'
+})
+gsap.timeline()
+    .to("#intro .cover", {
+        x: 0,
+        stagger: {
+            amount: 1.3,
+        },
+        delay: 0.5,
+        duration: 1.3,
+    })
+    .to("#intro .line", {
+        height: 0,
+        delay: 0.4,
+        stagger: {
+            amount: 0.4,
+            from: "end",
+        },
+        onComplete: function () {
+            document.querySelector("#intro").remove();
+            startNameAnimation();
+        },
+    });
 
 // name animation
-startNameAnimation()
+
+// startNameAnimation()
 
 function startNameAnimation() {
     let nameTl = gsap.timeline();
     nameTl
-        .to("body", {
+        .to("#full__container", {
             // overflowY: "initial",
             duration: 0,
         })
@@ -73,7 +75,7 @@ function reverseText() {
             trigger: "#name",
             start: "85% 80%",
             scrub: 1,
-            end: '40% 10%'
+            end: "40% 10%",
         },
     });
     tl.to(".line_two .char, .line_one .char", {
@@ -82,26 +84,60 @@ function reverseText() {
         stagger: {
             amount: 1,
         },
-    })
+    });
 }
-// image scroll animation 
-gsap.to("#image .img__container #img", {
-    onStart: function () {
-       const container = document.querySelector("#image .img__container");
-        const image = document.querySelector('#image #img');
-        image.style.display = 'inline-block';
-        container.style.width = '100%';
-        container.style.height = 'initial';
-        container.style.backgroundColor = 'transparent';
-        container.style.animation = 'none';
-    },
-    width: 100 + '%',
-    y: -20 + 'vh',
+
+// image scroll animation
+
+gsap.timeline({
     scrollTrigger: {
-        trigger: '#image',
-        start: 'top 70%',
-        end: '-2% top',
-        scrub: 1,
-        markers: true,
+        trigger: "#name",
+        start: "top bottom",
+        end: "top center",
+        scrub: 0.8,
     }
+}).to("#image .img__container #img", {
+    onStart: function () {
+        const blink = document.querySelector("#image .blink");
+        const image = document.querySelector("#image #img");
+        image.style.display = "inline-block";
+        blink.style.display = "none";
+    },
+    width: 100 + "%",
+    y: -20 + "vh",
+    ease: 'linear'
+}).to("#image .img__container", {
+    y: -10 + 'vh'
+}, '<')
+
+
+
+
+// ------------------- front end header ---------------------------- >
+const front_end_heading =
+    "#front__end .line_one .char, #front__end .line_two .char";
+gsap.set("#front__end #path", {
+    transformOrigin: "center",
+});
+gsap.timeline({
+    scrollTrigger: {
+        trigger: "#front__end #text__container",
+        start: "bottom bottom",
+        scrub: 1,
+        pin: true,
+    },
 })
+    .from(front_end_heading, {
+        y: -300,
+        opacity: 0,
+        stagger: {
+            amount: 1,
+        },
+    })
+    .to(front_end_heading, {
+        y: -300,
+        opacity: 0,
+        stagger: {
+            amount: 1,
+        },
+    });
