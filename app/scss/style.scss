@@ -2,175 +2,424 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    scroll-behavior: smooth;
 }
 
-// responsive breakpoints
-$sm: 540px;
-$md: 720px;
-$lg: 960px;
-$xl: 1140px;
-$xxl: 1320px;
+html,
+body {
+    // overflow: hidden;
+}
 
-// media query
+img,
+a {
+    display: inline-block;
+}
+img,
+svg {
+    width: 100%;
+}
+
+// fonts
+// ibm fonts
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+
+$ibm__bold: "IBM Plex Sans", sans-serif;
+$text__font: "Rubik", sans-serif;
+// fluid text generator
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+@mixin font-size($min-vw, $max-vw, $min-font-size, $max-font-size) {
+    $u1: unit($min-vw);
+    $u2: unit($max-vw);
+    $u3: unit($min-font-size);
+    $u4: unit($max-font-size);
+
+    @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+        & {
+            font-size: $min-font-size;
+            @media screen and (min-width: $min-vw) {
+                font-size: calc(
+                    #{$min-font-size} + #{strip-unit(
+                            $max-font-size - $min-font-size
+                        )} *
+                        (
+                            (100vw - #{$min-vw}) / #{strip-unit(
+                                    $max-vw - $min-vw
+                                )}
+                        )
+                );
+            }
+            @media screen and (min-width: $max-vw) {
+                font-size: $max-font-size;
+            }
+        }
+    }
+}
+// responsive
+$xs: 576px;
+$sm: 768px;
+$md: 992px;
+$lg: 1200px;
+$xl: 1400px;
+$xxl: 1800px;
+
 @mixin resp($width) {
     @media only screen and (min-width: $width) {
         @content;
     }
 }
-
-// body {
-//     overflow: hidden;
-// }
-
-// fonts
-$heading: "Montserrat", sans-serif;
-
 // common style
-.centerF {
+.big__heading {
+    font-family: $ibm__bold;
+    @include font-size(320px, 1400px, 80px, 290px);
+    line-height: 100%;
+    @include resp($xl) {
+        @include font-size($xl, 2500px, 250px, 350px);
+    }
+}
+.sec__heading {
+    font-family: $ibm__bold;
+    @include font-size(320px, 2000px, 50px, 250px);
+    text-align: center;
+}
+.full {
+    width: 100%;
+    height: 100%;
+}
+.auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+.fullAuto {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-// -------------- main title text style --------------- 
-.main__title {
-        @extend .centerF;
-        flex-direction: column;
-        h1 {
-            font-family: $heading;
-            //   font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
-            font-size: calc(
-                75px + (220 - 75) * ((100vw - 320px) / (1600 - 320))
-            );
-            line-height: calc(
-                68px + (200 - 68) * ((100vw - 320px) / (1600 - 320))
-            );
-            .word {
-                display: flex;
-                flex-flow: row wrap;
-                .chars {
-                    display: block;
+.char {
+    display: inline-block;
+}
+//   font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+
+//   responsive generate
+$resp: (
+    "576px": 540,
+    "768px": 720,
+    "992px": 960,
+    "1200px": 1140,
+    "1400px": 1320,
+);
+
+// @each $break, $container in $resp {
+//     @include resp(unquote($break)) {
+//         .container {
+//             margin-left: auto;
+//             margin-right: auto;
+//             max-width: unquote($container + "px");
+//         }
+//     }
+// }
+
+@mixin pd($x) {
+    padding-left: $x;
+    padding-right: $x;
+}
+
+.container {
+    width: 100%;
+    @extend .auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    // responsive
+    @include resp($xs) {
+        @include pd(25px);
+    }
+    @include resp($sm) {
+        @include pd(60px);
+    }
+    @include resp($md) {
+        @include pd(75px);
+    }
+    @include resp($lg) {
+        @include pd(90px);
+    }
+    @include resp($xl) {
+        @include pd(105px);
+    }
+    @include resp($xxl) {
+        @include pd(150px);
+    }
+    @include resp(2100px) {
+        max-width: 1800px;
+        padding: 0px;
+    }
+}
+// common style
+
+#main__wrapper {
+    background-color: #fefae0;
+}
+// ------------------------ header ---------------------
+
+#header {
+    display: none;
+}
+
+// ------------------- name ----------------
+#name {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    .container {
+        @extend .full;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        position: relative;
+        .texts {
+            // @extend .full;
+            // display: flex;
+            // justify-content: center;
+            // flex-flow: column wrap;
+            position: relative;
+            width: 100%;
+            h1 {
+                @extend .big__heading;
+                @include resp($xl) {
+                    font-size: calc(280px + 100 * ((100vw - 1400px) / 1100));
+                }
+            }
+        }
+        // image
+        .picture {
+            text-align: right;
+            position: absolute;
+            overflow: visible;
+            right: 0px;
+            top: 0px;
+            // height: 10px;
+            #main__img {
+                width: calc(20vw * 1.1);
+                display: inline-block;
+                @include resp($md) {
+                    // max-width: 200px;
+                }
+                @include resp($lg) {
+                    // width: calc(20vw * 1.3);
+                    max-width: initial;
+                }
+                @include resp($xl) {
+                    width: calc(22vw * 0.9);
+                }
+                @include resp($xxl) {
+                    max-width: 400px;
                 }
             }
         }
     }
-// intro section
-#intro {
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    .cover {
-        width: 100%;
-        height: 20vh;
-        transform: translateX(-110vw);
-        .line {
-            width: 100%;
-            height: 100%;
-            background-color: black;
-        }
-    }
 }
 
-// name section
-#name {
-    @extend .centerF;
+// ----------------- front end developer ----------------
+#front__end__developer {
     width: 100%;
-    height: 100vh;
-    flex-direction: column;
-    .texts {
-       @extend .main__title;
-    }
-    // images
-    @at-root #image {
-        width: 100vw;
-        margin-top: -21vh;
-        // @extend .centerF;
-        .img__container {
-            text-align: center;
-            width: 100%;
-            height: 100%;
-            .blink {
-                display: inline-block;
-                display: none;
-                width: 25px;
-                height: 25px;
-                background-color: black;
-                animation: 0.5s blink linear infinite alternate both;
-            }
-            img {
-                width: 100%;
-                // display: none;
-            }
-        }
-        // blink animation
-        @keyframes blink {
-            from {
-                background-color: black;
-            }
-            to {
-                background-color: transparent;
-            }
-        }
-    }
-}
-//  ------------------- image section --------------------- 
-#image {
-    width: 100%;
-    height: 100vh;
-}
-//--------------------- front end -------------------- > 
-#front__end {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-
-    //------------------ bg svg ------------- 
-    .bg__container {
-        position: absolute;
-        left: 0px;
-        top: 0px;
-        z-index: 200;
-        width: 100%;
-        overflow: hidden;
-        // height: 70vh;
-        svg {
-            // width: 150%;
-            // margin-left: -26%;
-            #path {
-                // transform-origin: center;
-                // transform: rotate(360deg);
-                // animation: rotate;
-                // animation-duration: 25s;
-            }
-            // .rotate {
-            //     animation: rotate;
-            //     animation-duration: 25s;
-            // }
-            // @keyframes rotate {
-            //     from{
-            //         transform: rotate(360deg);
-            //     }
-            //     to {
-            //         transform: rotate(20deg);
-            //     }
-            // }
-        }
-    }
-    //  --------------- texts -------------------
-    #text__container {
-        position: absolute;
-        left: 0px;
-        top: 0px;
-        z-index: 100;
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    min-height: 100vh;
+    .container {
+        @extend .full;
+        @include pd(45px);
         .texts {
-            @extend .main__title;
+            h1 {
+                @extend .sec__heading;
+            }
         }
-    } 
+        // description
+        .description {
+            width: 100%;
+            margin-top: 30px;
+            @include resp($sm) {
+                margin-top: 65px;
+            }
+            @include resp($lg) {
+                margin-top: 130px;
+            }
+            @include resp($xl) {
+                margin-left: 0px;
+            }
+            p {
+                width: 90%;
+                @extend .auto;
+                // text-align: center;
+                font-family: $text__font;
+                @include font-size(320px, 1600px, 25px, 80px);
+                text-rendering: optimizeLegibility;
+                line-height: 150%;
+                @include resp($lg) {
+                    width: 85%;
+                    text-align: justify;
+                }
+                @include resp($xl) {
+                    width: 80%;
+                }
+            }
+        }
+    }
+}
+
+// ------------------ skill section -------------------
+
+#skills {
+    width: 100%;
+    min-height: 100vh;
+    .container {
+        @extend .full;
+        .texts {
+            h1 {
+                @extend .sec__heading;
+            }
+        }
+        // round
+        .round__wrapper {
+            width: 100vw;
+            height: 50px;
+            overflow: hidden;
+            display: none;
+            .rounds {
+                // display: flex;
+
+                background-color: white;
+                padding: 25px;
+                overflow: auto;
+                h1 {
+                    font-family: $text__font;
+                    // overflow: auto;
+                }
+            }
+        }
+        // skill svg
+        svg {
+            width: 100%;
+            #background {
+                fill: transparent;
+            }
+        }
+    }
+}
+
+// ------------- works section ---------------------
+#works {
+    .container {
+        // padding: 100px 0px;
+        .texts {
+            h1 {
+                @extend .sec__heading;
+            }
+        }
+        // project list
+        #project__list {
+            width: 100%;
+            .list__name {
+                width: 100%;
+                li {
+                    list-style: none;
+
+                    border-bottom: 1.8px solid black;
+                    padding: 20px 0px;
+                    &:last-child {
+                        border-bottom: 0px solid transparent;
+                    }
+                    // link
+                    a {
+                        font-family: $text__font;
+                        color: black;
+                        font-size: 2rem;
+                        text-decoration: none;
+                        position: relative;
+                        &::after {
+                            content: "";
+                        }
+                        &:hover + img {
+                            display: inline-block;
+                            width: 220px;
+                            opacity: 1;
+                            transition: width 0.8s, opacity 0.8s;
+                        }
+                    }
+                    // image
+                    img {
+                        position: absolute;
+                        width: 0px;
+                        z-index: 1000;
+                        opacity: 0;
+                        transform: translateY(-45%), rotate(35deg);
+                        transform-origin: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//  ----------------- footer ----------------
+footer {
+    .container {
+        .texts {
+            h1 {
+                @extend .sec__heading;
+            }
+        }
+        .cont__container {
+            display: flex;
+            flex-direction: column;
+            @include resp ($md) {
+                flex-direction: row;
+            }
+            aside {
+                width: 100%;
+                padding: 40px 0px;
+                background-color: black;
+                border-bottom: 2px solid white;
+                &:last-child {
+                    border-bottom: 0px;
+                }
+                a {
+                    font-family: $ibm__bold;
+                    color: white;
+                    text-align: center;
+                    display: block;
+                    text-transform: capitalize;
+                    font-size: 2rem;
+                    @include resp ($md) {
+                        font-size: 3rem;
+                    }
+                    @include resp ($xl) {
+                        font-size: 4rem;
+                    }
+                    @include resp ($xxl) {
+                        font-size: 5rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// loader 
+body {
+    overflow: hidden;
+}
+#loader {
+    width: 100%;
+    height: 100vh;
+    display: none;
+    div {
+        width: 20%;
+        height: 100%;
+        .inner {
+            width: 100%;
+            background-color: black;
+            height: 100%;
+        }
+    }
 }
