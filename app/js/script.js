@@ -17,7 +17,7 @@ let md = window.matchMedia("(min-width: 992px)");
 let lg = window.matchMedia("(min-width: 1200px)");
 let xl = window.matchMedia("(min-width: 1400px)");
 let xxl = window.matchMedia("(min-width: 1800px)");
-
+// reset window position 
 // gsap transition
 const loadTl = gsap.timeline();
 loadTl
@@ -68,7 +68,7 @@ loadTl
     )
     .to("body", {
         // overflow-x: "visible",
-        overflowY: 'visible'
+        overflowY: "visible",
     });
 
 // name section scroll trigger
@@ -111,7 +111,6 @@ gsap.timeline({
         trigger: "#name",
         start: "center center",
         end: "+100%",
-        markers: true,
         scrub: 1,
         pin: true,
     },
@@ -141,49 +140,54 @@ gsap.timeline({
                 return 60;
             } else if (xs.matches) {
                 return 25;
+            } else {
+                return 15;
             }
         },
     });
 
-// $resp: (
-//     "576px": 540,
-//     "768px": 720,
-//     "992px": 960,
-//     "1200px": 1140,
-//     "1400px": 1320,
-// );
+// front end developer section animation 
+gsap.timeline({
+    scrollTrigger: {
+        trigger: "#front__end__developer",
+        markers: true,
+        scrub: 1,
+        start: "0% 65%",
+        end: '50% 80%'
+    }
+})
+    .from("#front__end__developer .first__line .char", {
+        x: -300,
+        opacity: 0,
+        duration: 2.5,
+        stagger: {
+            amount: 1,
+        },
+    })
+    .from("#front__end__developer .sec__line .char", {
+        x: -300,
+        opacity: 0,
+        duration: 2.5,
+        stagger: {
+            amount: 1,
+        },
+    })
+    .to("#front__end__developer .first__line .char", {
+        x: 300,
+        opacity: 0,
+        duration: 2.5,
+        stagger: {
+            amount: 1,
+            from: "end",
+        },
+    })
+    .to("#front__end__developer .sec__line .char", {
+        x: 300,
+        opacity: 0,
+        duration: 2.5,
+        stagger: {
+            amount: 1,
+            from: "end",
+        },
+    });
 
-// @mixin pd($x) {
-//     padding-left: $x;
-//     padding-right: $x;
-// }
-
-// .container {
-//     width: 100%;
-//     @extend .auto;
-//     padding-left: 15px;
-//     padding-right: 15px;
-//     // responsive
-//     @include resp($xs) {
-//         @include pd(25px);
-//     }
-//     @include resp($sm) {
-//         @include pd(60px);
-//     }
-//     @include resp($md) {
-//         @include pd(75px);
-//     }
-//     @include resp($lg) {
-//         @include pd(90px);
-//     }
-//     @include resp($xl) {
-//         @include pd(105px);
-//     }
-//     @include resp($xxl) {
-//         @include pd(150px);
-//     }
-//     @include resp(2100px) {
-//         max-width: 1800px;
-//         padding: 0px;
-//     }
-// }
