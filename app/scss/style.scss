@@ -97,11 +97,11 @@ $xxl: 1800px;
     align-items: center;
     justify-content: center;
 }
-// character 
+// character
 .char {
     display: inline-block;
 }
-// front end char 
+// front end char
 #front__end__developer .word {
     display: inline-flex;
 }
@@ -221,7 +221,20 @@ $resp: (
     width: 100%;
     min-height: 100vh;
     // margin top
-    margin-top: 950px;
+    margin-top: 800px;
+    position: relative;
+    // svg style
+    .round__ball {
+        width: 200px;
+        height: 200px;
+        position: sticky;
+        left: 100%;
+        top: 25%;
+        z-index: 5000;
+        svg {
+            width: 100%;
+        }
+    }
     .container {
         @extend .full;
         @include pd(45px);
@@ -243,7 +256,19 @@ $resp: (
             @include resp($xl) {
                 margin-left: 0px;
             }
+            // background 
+            #background {
+                width: 100%;
+                height: 250px;
+                background-color: hsl(180deg 11% 59%);
+                // position: relative;
+                z-index: 100;
+                position: sticky;
+                display: none;
+            }
+            // paragraph and texts
             p {
+                // mix-blend-mode: overlay;
                 width: 90%;
                 @extend .auto;
                 // text-align: center;
@@ -257,6 +282,8 @@ $resp: (
                 @include resp($xl) {
                     width: 80%;
                 }
+                z-index: 200;
+                position: relative;
             }
         }
     }
@@ -293,12 +320,26 @@ $resp: (
             }
         }
         // skill svg
-        svg {
-            width: 100%;
-            #background {
-                fill: transparent;
+
+        #skill__img {
+            svg {
+                width: 100%;
+                #pic {
+                    transform: translateY(-12px);
+                }
+                // svg container 
+                #svg__container {
+                    // line color 
+                    .main__line {
+
+                    }
+                    .color__line {
+                        stroke: none;
+                    }
+                }
             }
         }
+
     }
 }
 

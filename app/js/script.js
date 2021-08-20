@@ -1,4 +1,5 @@
 import "../scss/style.scss";
+import './propper';
 // transform span
 import splitting from "splitting";
 import { gsap } from "gsap";
@@ -17,59 +18,59 @@ let md = window.matchMedia("(min-width: 992px)");
 let lg = window.matchMedia("(min-width: 1200px)");
 let xl = window.matchMedia("(min-width: 1400px)");
 let xxl = window.matchMedia("(min-width: 1800px)");
-// reset window position 
+// reset window position
 // gsap transition
 const loadTl = gsap.timeline();
-loadTl
-    .set("#loader", {
-        display: "flex",
-    })
-    .to("#loader .inner", {
-        width: 0,
-        delay: 0.5,
-        stagger: {
-            amount: 1.2,
-        },
-    })
-    .to("#loader", {
-        display: "none",
-    })
-    .from("#name .line__one .char", {
-        opacity: 0,
-        y: -100 + "%",
-        duration: 2.5,
-        stagger: {
-            amount: 1,
-            from: "end",
-        },
-    })
-    .from(
-        "#name .line__two .char",
-        {
-            x: -300,
-            opacity: 0,
-            duration: 2.5,
-            stagger: {
-                amount: 1,
-                from: "end",
-            },
-        },
-        "<"
-    )
-    .from(
-        "#name #main__img",
-        {
-            x: -100,
-            y: 100,
-            opacity: 0,
-            duration: 2.5,
-        },
-        "=-2"
-    )
-    .to("body", {
-        // overflow-x: "visible",
-        overflowY: "visible",
-    });
+// loadTl
+//     .set("#loader", {
+//         display: "flex",
+//     })
+//     .to("#loader .inner", {
+//         width: 0,
+//         delay: 0.5,
+//         stagger: {
+//             amount: 1.2,
+//         },
+//     })
+//     .to("#loader", {
+//         display: "none",
+//     })
+//     .from("#name .line__one .char", {
+//         opacity: 0,
+//         y: -100 + "%",
+//         duration: 2.5,
+//         stagger: {
+//             amount: 1,
+//             from: "end",
+//         },
+//     })
+//     .from(
+//         "#name .line__two .char",
+//         {
+//             x: -300,
+//             opacity: 0,
+//             duration: 2.5,
+//             stagger: {
+//                 amount: 1,
+//                 from: "end",
+//             },
+//         },
+//         "<"
+//     )
+//     .from(
+//         "#name #main__img",
+//         {
+//             x: -100,
+//             y: 100,
+//             opacity: 0,
+//             duration: 2.5,
+//         },
+//         "=-2"
+//     )
+//     .to("body", {
+//         // overflow-x: "visible",
+//         overflowY: "visible",
+//     });
 
 // name section scroll trigger
 const nameTl = gsap.timeline({
@@ -146,15 +147,14 @@ gsap.timeline({
         },
     });
 
-// front end developer section animation 
+// front end developer section animation
 gsap.timeline({
     scrollTrigger: {
         trigger: "#front__end__developer",
-        markers: true,
         scrub: 1,
-        start: "0% 65%",
-        end: '50% 80%'
-    }
+        start: "0% 70%",
+        end: "50% 80%",
+    },
 })
     .from("#front__end__developer .first__line .char", {
         x: -300,
@@ -162,6 +162,7 @@ gsap.timeline({
         duration: 2.5,
         stagger: {
             amount: 1,
+            from: "end",
         },
     })
     .from("#front__end__developer .sec__line .char", {
@@ -171,7 +172,7 @@ gsap.timeline({
         stagger: {
             amount: 1,
         },
-    })
+    }, '=-0.05')
     .to("#front__end__developer .first__line .char", {
         x: 300,
         opacity: 0,
@@ -191,3 +192,36 @@ gsap.timeline({
         },
     });
 
+// description
+// gsap.timeline().to("#front__end__developer .description .char", {
+//     x: -500,
+//     y: 700,
+//     duration: 2,
+//     delay: 0.4,
+//     stagger: {
+//         each: 0.1
+//     }
+// });
+gsap.to("#front__end__developer .round__ball", {
+    rotate: 360,
+    duration: 8,
+    repeat: -1,
+    ease: 'linear'
+});
+
+// gsap.timeline({
+//     scrollTrigger: {
+//         trigger: "#front__end__developer .description",
+//         start: "top center",
+//         scrub: 1,
+//     },
+// }).to("#front__end__developer .description .char", {
+    
+// });
+
+for (var a = 0; a < 10; a++) {
+    console.log(gsap.utils.random())
+}
+
+
+// skill section animation 
