@@ -292,6 +292,7 @@ $resp: (
 // ------------------ skill section -------------------
 
 #skills {
+    // background-color: wheat;
     width: 100%;
     min-height: 100vh;
     .container {
@@ -322,6 +323,9 @@ $resp: (
         // skill svg
 
         #skill__img {
+            max-width: 1150px;
+            margin-left: auto;
+            margin-right: auto;
             svg {
                 width: 100%;
                 #pic {
@@ -333,9 +337,16 @@ $resp: (
                     .main__line {
 
                     }
-                    .color__line {
-                        stroke: none;
+                    // .color__line {
+                    //     stroke: none;
+                    // }
+                    // circle 
+                    .background {
+                        fill: #ddd;
                     }
+                    // .forthground {
+                    //     fill: none;
+                    // }
                 }
             }
         }
@@ -463,3 +474,18 @@ body {
         }
     }
 }
+
+
+// propper style 
+.pop {
+    font-family: Arial;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 2rem;
+    text-transform: capitalize;
+    padding: 15px 25px;
+    height: 38px;
+    font-weight: bold;
+    display: none;
+    opacity: 0;
+    }

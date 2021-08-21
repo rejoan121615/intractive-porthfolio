@@ -1,5 +1,5 @@
 import "../scss/style.scss";
-import './propper';
+import './skill-animation';
 // transform span
 import splitting from "splitting";
 import { gsap } from "gsap";
@@ -128,7 +128,6 @@ gsap.timeline({
         width: 100 + "vw",
         y: -5 + "%",
         x: function () {
-            console.log(xl);
             if (xxl.matches) {
                 return 150;
             } else if (xl.matches) {
@@ -219,9 +218,18 @@ gsap.to("#front__end__developer .round__ball", {
     
 // });
 
-for (var a = 0; a < 10; a++) {
-    console.log(gsap.utils.random())
-}
-
-
 // skill section animation 
+// character animation 
+const charEle = gsap.utils.toArray("#front__end__developer .description .char")
+gsap.timeline().set(charEle, {
+    display: 'inline-block'
+}).fromTo(charEle, {
+    opacity: 0,
+    x: 0
+}, {
+    x: 100,
+    opacity: 1,
+    stagger: {
+        amount: 20
+    }
+    })
