@@ -225,6 +225,8 @@ $resp: (
     position: relative;
     // svg style
     .round__ball {
+
+    display: none;
         width: 200px;
         height: 200px;
         position: sticky;
@@ -247,6 +249,8 @@ $resp: (
         .description {
             width: 100%;
             margin-top: 30px;
+            // display:  ;
+            // display: flex;
             @include resp($sm) {
                 margin-top: 65px;
             }
@@ -284,6 +288,12 @@ $resp: (
                 }
                 z-index: 200;
                 position: relative;
+
+                // make line horizontal 
+                display: flex;
+                .whitespace {
+                    padding: 13px;
+                }
             }
         }
     }

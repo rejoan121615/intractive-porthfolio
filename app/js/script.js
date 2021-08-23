@@ -1,9 +1,10 @@
 import "../scss/style.scss";
-import './skill-animation';
+import "./skill-animation";
 // transform span
 import splitting from "splitting";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Scrollbar from 'smooth-scrollbar';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -164,14 +165,18 @@ gsap.timeline({
             from: "end",
         },
     })
-    .from("#front__end__developer .sec__line .char", {
-        x: -300,
-        opacity: 0,
-        duration: 2.5,
-        stagger: {
-            amount: 1,
+    .from(
+        "#front__end__developer .sec__line .char",
+        {
+            x: -300,
+            opacity: 0,
+            duration: 2.5,
+            stagger: {
+                amount: 1,
+            },
         },
-    }, '=-0.05')
+        "=-0.05"
+    )
     .to("#front__end__developer .first__line .char", {
         x: 300,
         opacity: 0,
@@ -205,31 +210,77 @@ gsap.to("#front__end__developer .round__ball", {
     rotate: 360,
     duration: 8,
     repeat: -1,
-    ease: 'linear'
+    ease: "linear",
 });
 
-// gsap.timeline({
-//     scrollTrigger: {
-//         trigger: "#front__end__developer .description",
-//         start: "top center",
-//         scrub: 1,
-//     },
-// }).to("#front__end__developer .description .char", {
-    
-// });
-
-// skill section animation 
-// character animation 
-const charEle = gsap.utils.toArray("#front__end__developer .description .char")
-gsap.timeline().set(charEle, {
-    display: 'inline-block'
-}).fromTo(charEle, {
-    opacity: 0,
-    x: 0
-}, {
-    x: 100,
-    opacity: 1,
-    stagger: {
-        amount: 20
+// character animation
+const charEle = gsap.utils.toArray(
+    "#front__end__developer .description .char, #front__end__developer .description .whitespace"
+);
+let topLine = [];
+let bottomLine = [];
+// devide all char
+charEle.forEach((item, index) => {
+    if (index % 2) {
+        topLine.push(item);
+    } else {
+        bottomLine.push(item);
     }
-    })
+});
+
+// gsap.to(topLine, {
+//     y: 100,
+//     duration: 0.5
+// })
+
+// gsap.to(bottomLine, {
+//     y: -100,
+//     duration: 0.5
+// })
+
+let count = 0;
+
+gsap.to(".description p", {
+    x: -780 + "%",
+    duration: 50,
+    ease: "cubic-bezier(0.47, 0.45, 0.5, 0.47)",
+    scrollTrigger: {
+        trigger: "#front__end__developer",
+        start: "600 center",
+        markers: true,
+        scrub: true,
+        pin: true,
+    },
+});
+
+
+console.log(topLine);
+
+
+
+// smooth scroll 
+
+const scroller = document.querySelector("#main__wrapper");
+const bodyScroller = Scrollbar.init(scroller, {
+    damping: 0.1, delegateTo: document, alwaysShowTracks: true
+})
+
+ScrollTrigger.scrollerProxy("#main__wrapper", {
+    scrollTop(value) {
+        if (arguments.length) {
+            bodyScroller.scrollTop = value;
+        }
+        return bodyScroller.scrollTop;
+    },
+});
+
+bodyScroller.addListener(ScrollTrigger.update);
+ScrollTrigger.defaults({ scroller: scroller });
+// markers position 
+if (document.querySelector(".gsap-marker-scroller-start")) {
+    const markers = gsap.utils.toArray('[class *= "gsap-marker"]');
+
+    bodyScroller.addListener(({ offset }) => {
+        gsap.set(markers, { marginTop: -offset.y });
+    });
+}
