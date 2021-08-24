@@ -4,33 +4,38 @@
     box-sizing: border-box;
 }
 
-html,
+// google fonts
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Rubik&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap");
+
+$ibm: "IBM Plex Sans", sans-serif;
+$rubik: "Rubik", sans-serif;
+$cormo: "Cormorant Garamond", serif;
+
 body {
-    // overflow: hidden;
+    overflow-x: hidden;
+    font-family: $rubik;
+}
+// responsive
+$xs: 576px;
+$sm: 768px;
+$md: 992px;
+$lg: 1200px;
+$xl: 1400px;
+$xxl: 1800px;
+
+@mixin resp($width) {
+    @media only screen and (min-width: $width) {
+        @content;
+    }
 }
 
-img,
-a {
-    display: inline-block;
-}
-img,
-svg {
+.full {
     width: 100%;
+    height: 100%;
 }
 
-// fonts
-// ibm fonts
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
-
-$ibm__bold: "IBM Plex Sans", sans-serif;
-$text__font: "Rubik", sans-serif;
-// fluid text generator
-@function strip-unit($value) {
-    @return $value / ($value * 0 + 1);
-}
-
-@mixin font-size($min-vw, $max-vw, $min-font-size, $max-font-size) {
+@mixin fSize($min-vw, $max-vw, $min-font-size, $max-font-size) {
     $u1: unit($min-vw);
     $u2: unit($max-vw);
     $u3: unit($min-font-size);
@@ -57,445 +62,195 @@ $text__font: "Rubik", sans-serif;
         }
     }
 }
-// responsive
-$xs: 576px;
-$sm: 768px;
-$md: 992px;
-$lg: 1200px;
-$xl: 1400px;
-$xxl: 1800px;
 
-@mixin resp($width) {
-    @media only screen and (min-width: $width) {
-        @content;
-    }
-}
-// common style
-.big__heading {
-    font-family: $ibm__bold;
-    @include font-size(320px, 1400px, 80px, 290px);
-    line-height: 100%;
-    @include resp($xl) {
-        @include font-size($xl, 2500px, 250px, 350px);
-    }
-}
-.sec__heading {
-    font-family: $ibm__bold;
-    @include font-size(320px, 2000px, 50px, 250px);
-    text-align: center;
-}
-.full {
-    width: 100%;
-    height: 100%;
-}
-.auto {
-    margin-left: auto;
-    margin-right: auto;
-}
-.fullAuto {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-// character
-.char {
-    display: inline-block;
-}
-// front end char
-#front__end__developer .word {
-    display: inline-flex;
-}
-//   font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
-
-//   responsive generate
-$resp: (
-    "576px": 540,
-    "768px": 720,
-    "992px": 960,
-    "1200px": 1140,
-    "1400px": 1320,
-);
-
-@mixin pd($x) {
-    padding-left: $x;
-    padding-right: $x;
+.sm__heading {
+    font-size: calc(70px + (350 - 70) * ((100vw - 300px) / (1900 - 300)));
+    line-height: calc(50px + (300 - 50) * ((100vw - 300px) / (1900 - 300)));
+    font-family: $ibm;
 }
 
 .container {
     width: 100%;
-    @extend .auto;
+    height: 100%;
     padding-left: 15px;
     padding-right: 15px;
-    // responsive
+    transition: all 0.6s;
     @include resp($xs) {
-        @include pd(25px);
+        max-width: 540px;
+        margin: 0 auto;
     }
     @include resp($sm) {
-        @include pd(60px);
+        max-width: 720px;
     }
     @include resp($md) {
-        @include pd(75px);
+        max-width: 960px;
     }
     @include resp($lg) {
-        @include pd(90px);
+        max-width: 1140px;
     }
     @include resp($xl) {
-        @include pd(105px);
+        max-width: 1320px;
     }
     @include resp($xxl) {
-        @include pd(150px);
-    }
-    @include resp(2100px) {
-        max-width: 1800px;
-        padding: 0px;
+        max-width: 1700px;
     }
 }
-// common style
 
-#main__wrapper {
-    background-color: #fefae0;
-}
-// ------------------------ header ---------------------
-
-#header {
-    display: none;
-}
-
-// ------------------- name ----------------
-#name {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+#home {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
     .container {
-        @extend .full;
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: center;
-        position: relative;
-        .texts {
-            // @extend .full;
-            // display: flex;
-            // justify-content: center;
-            // flex-flow: column wrap;
-            position: relative;
-            width: 100%;
-            h1 {
-                @extend .big__heading;
-                @include resp($xl) {
-                    font-size: calc(280px + 100 * ((100vw - 1400px) / 1100));
-                }
-            }
-        }
-        // image
-        .picture {
-            text-align: right;
-            position: absolute;
-            overflow: visible;
-            right: 0px;
-            top: 0px;
-            // height: 10px;
-            #main__img {
-                width: calc(20vw * 1.1);
-                display: inline-block;
-                @include resp($md) {
-                    // max-width: 200px;
-                }
-                @include resp($lg) {
-                    // width: calc(20vw * 1.3);
-                    max-width: initial;
-                }
-                @include resp($xl) {
-                    width: calc(22vw * 0.9);
-                }
-                @include resp($xxl) {
-                    max-width: 400px;
-                }
-            }
-        }
-    }
-}
-
-// ----------------- front end developer ----------------
-#front__end__developer {
-    width: 100%;
-    min-height: 100vh;
-    // margin top
-    margin-top: 800px;
-    position: relative;
-    // svg style
-    .round__ball {
-
-    display: none;
-        width: 200px;
-        height: 200px;
-        position: sticky;
-        left: 100%;
-        top: 25%;
-        z-index: 5000;
-        svg {
-            width: 100%;
-        }
-    }
-    .container {
-        @extend .full;
-        @include pd(45px);
-        .texts {
-            h1 {
-                @extend .sec__heading;
-            }
-        }
-        // description
-        .description {
-            width: 100%;
-            margin-top: 30px;
-            // display:  ;
-            // display: flex;
-            @include resp($sm) {
-                margin-top: 65px;
-            }
-            @include resp($lg) {
-                margin-top: 130px;
-            }
-            @include resp($xl) {
-                margin-left: 0px;
-            }
-            // background 
-            #background {
-                width: 100%;
-                height: 250px;
-                background-color: hsl(180deg 11% 59%);
-                // position: relative;
-                z-index: 100;
-                position: sticky;
-                display: none;
-            }
-            // paragraph and texts
-            p {
-                // mix-blend-mode: overlay;
-                width: 90%;
-                @extend .auto;
-                // text-align: center;
-                font-family: $text__font;
-                @include font-size(320px, 1600px, 25px, 80px);
-                text-rendering: optimizeLegibility;
-                line-height: 150%;
-                @include resp($lg) {
-                    width: 85%;
-                }
-                @include resp($xl) {
-                    width: 80%;
-                }
-                z-index: 200;
-                position: relative;
-
-                // make line horizontal 
-                display: flex;
-                .whitespace {
-                    padding: 13px;
-                }
-            }
-        }
-    }
-}
-
-// ------------------ skill section -------------------
-
-#skills {
-    // background-color: wheat;
-    width: 100%;
-    min-height: 100vh;
-    .container {
-        @extend .full;
-        .texts {
-            h1 {
-                @extend .sec__heading;
-            }
-        }
-        // round
-        .round__wrapper {
-            width: 100vw;
-            height: 50px;
-            overflow: hidden;
-            display: none;
-            .rounds {
-                // display: flex;
-
-                background-color: white;
-                padding: 25px;
-                overflow: auto;
-                h1 {
-                    font-family: $text__font;
-                    // overflow: auto;
-                }
-            }
-        }
-        // skill svg
-
-        #skill__img {
-            max-width: 1150px;
-            margin-left: auto;
-            margin-right: auto;
-            svg {
-                width: 100%;
-                #pic {
-                    transform: translateY(-12px);
-                }
-                // svg container 
-                #svg__container {
-                    // line color 
-                    .main__line {
-
-                    }
-                    // .color__line {
-                    //     stroke: none;
-                    // }
-                    // circle 
-                    .background {
-                        fill: #ddd;
-                    }
-                    // .forthground {
-                    //     fill: none;
-                    // }
-                }
-            }
-        }
-
-    }
-}
-
-// ------------- works section ---------------------
-#works {
-    .container {
-        // padding: 100px 0px;
-        .texts {
-            h1 {
-                @extend .sec__heading;
-            }
-        }
-        // project list
-        #project__list {
-            width: 100%;
-            .list__name {
-                width: 100%;
-                li {
-                    list-style: none;
-
-                    border-bottom: 1.8px solid black;
-                    padding: 20px 0px;
-                    &:last-child {
-                        border-bottom: 0px solid transparent;
-                    }
-                    // link
-                    a {
-                        font-family: $text__font;
-                        color: black;
-                        font-size: 2rem;
-                        text-decoration: none;
-                        position: relative;
-                        &::after {
-                            content: "";
-                        }
-                        &:hover + img {
-                            display: inline-block;
-                            width: 220px;
-                            opacity: 1;
-                            transition: width 0.8s, opacity 0.8s;
-                        }
-                    }
-                    // image
-                    img {
-                        position: absolute;
-                        width: 0px;
-                        z-index: 1000;
-                        opacity: 0;
-                        transform: translateY(-45%), rotate(35deg);
-                        transform-origin: center;
-                    }
-                }
-            }
-        }
-    }
-}
-
-//  ----------------- footer ----------------
-footer {
-    .container {
-        .texts {
-            h1 {
-                @extend .sec__heading;
-            }
-        }
-        .cont__container {
+        .round-wrap {
             display: flex;
-            flex-direction: column;
-            @include resp($md) {
-                flex-direction: row;
-            }
-            aside {
-                width: 100%;
-                padding: 40px 0px;
-                background-color: black;
-                border-bottom: 2px solid white;
-                &:last-child {
-                    border-bottom: 0px;
-                }
-                a {
-                    font-family: $ibm__bold;
-                    color: white;
-                    text-align: center;
-                    display: block;
-                    text-transform: capitalize;
-                    font-size: 2rem;
-                    @include resp($md) {
-                        font-size: 3rem;
-                    }
-                    @include resp($xl) {
-                        font-size: 4rem;
-                    }
-                    @include resp($xxl) {
-                        font-size: 5rem;
-                    }
-                }
+            align-items: center;
+            justify-content: space-between;
+            @extend .full;
+            width: 80%;
+            margin: 0 auto;
+            .round {
+                width: 10vw;
+                height: 10vw;
+                background-color: white;
             }
         }
     }
 }
 
-// loader
-body {
-    // overflow: hidden;
-    overflow-x: hidden;
-}
-#loader {
+// intro section
+#intro {
     width: 100%;
     height: 100vh;
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 0;
-    div {
-        width: 20%;
-        height: 100%;
-        .inner {
-            width: 100%;
-            background-color: black;
-            height: 100%;
+    .container__wrap {
+        display: flex;
+        flex-flow: column nowrap;
+        @extend .full;
+        @include resp($lg) {
+            justify-content: center;
+        }
+    }
+    // simple container
+    .container {
+        height: 60vh;
+        display: grid;
+        align-items: center;
+        @include resp($sm) {
+            height: 65vh;
+        }
+        @include resp($lg) {
+            height: initial;
+        }
+        .texts {
+            h1 {
+                font-size: calc(
+                    90px + (350 - 80) * ((100vw - 300px) / (1900 - 300))
+                );
+                line-height: calc(
+                    70px + (300 - 70) * ((100vw - 300px) / (1900 - 300))
+                );
+                font-family: $ibm;
+                &:nth-child(1) {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+    // img container
+    .img__container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        @include resp($sm) {
+            height: 25vh;
+            justify-content: flex-end;
+            width: 90%;
+        }
+        @include resp($lg) {
+            height: initial;
+        }
+        .img__wrap {
+            width: 30%;
+            @include resp($sm) {
+                width: 23%;
+            }
+            @include resp($lg) {
+                width: 15%;
+            }
+            img {
+                width: 100%;
+            }
         }
     }
 }
 
-
-// propper style 
-.pop {
-    font-family: Arial;
-    text-align: center;
-    border-radius: 5px;
-    font-size: 2rem;
-    text-transform: capitalize;
-    padding: 15px 25px;
-    height: 38px;
-    font-weight: bold;
-    display: none;
-    opacity: 0;
+// about me
+#whoAmI {
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 120px;
+    padding-bottom: 120px;
+    .container {
+        .article {
+            min-height: 100vh;
+            h3 {
+                font-family: $cormo;
+                font-size: calc(
+                    35px + (160 - 35) * ((100vw - 300px) / (1900 - 300))
+                );
+                @include resp(1900px) {
+                    font-size: 165px;
+                }
+            }
+            .name {
+                font-size: 1rem;
+                @include resp(768px) {
+                    font-size: calc(
+                        16px + (50 - 16) * ((100vw - 300px) / (1900 - 300))
+                    );
+                }
+            }
+            &:nth-child(2) {
+                margin-top: 120px;
+            }
+        }
     }
+}
+
+// skills section
+#skills {
+    .container {
+        .texts {
+            h1 {
+                @extend .sm__heading;
+            }
+        }
+        // round wrapper
+    }
+    // round wrapper
+    .round__wrapper {
+        width: 100%;
+        .rounds {
+            padding: 10px 0px;
+            background-color: black;
+            display: flex;
+            h1 {
+                font-family: $cormo;
+                font-size: calc(
+                    20px + (40 - 20) * ((100vw - 300px) / (1900 - 300))
+                );
+                color: white;
+                border-left: 1.2px solid white;
+                border-right: 1.2px solid white;
+                padding-left: 35px;
+                padding-right: 35px;
+            }
+        }
+    }
+
+    // skills image
+    #skill__img {
+        #skill__list {
+            display: none;
+        }
+    }
+}
