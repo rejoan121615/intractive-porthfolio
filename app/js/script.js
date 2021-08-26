@@ -118,6 +118,39 @@ gsap.set("#home", {
 
 // gsap scroll animation
 ScrollTrigger.matchMedia({
+        "(max-width: 991px)": function () {
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '#intro',
+                markers: true,
+                scrub: 1,
+                start: '50% 50%',
+                end: '100% 10%',
+                // pin: true
+            }
+        }).to("#intro .line__one .char", {
+            paddingLeft: 30,
+            paddingRight: 30
+        }).to("#intro .line__one", {
+            xPercent: -100
+        }, '<')
+        .to("#intro .line__two .char", {
+            paddingLeft: 30,
+            paddingRight: 30
+        }, '<').to("#intro .line__two", {
+            xPercent: 100,
+            onComplete: function () {
+                gsap.set("#intro .container", {
+                    padding: 0
+                })
+            }
+        }, '<')
+            .to("#intro .img__wrap img", {
+                width: 100 + '%',
+                scale: 1.35,
+                yPercent: 10,
+        }, '<')
+    },
     "(min-width: 992px)": function () {
         gsap.timeline({
             scrollTrigger: {

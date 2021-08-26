@@ -146,9 +146,10 @@ $xxl: 1800px;
     }
     // simple container
     .container {
-        height: 60vh;
+        height: 100vh;
         display: grid;
         align-items: center;
+        padding: 0;
         @include resp($sm) {
             height: 65vh;
         }
@@ -168,6 +169,13 @@ $xxl: 1800px;
                 &:nth-child(1) {
                     margin-bottom: 20px;
                 }
+                text-align: center;
+                @include resp ($sm) {
+                    text-align: left;
+                }
+            }
+            .word {
+                display: inline-flex;
             }
         }
     }
@@ -176,6 +184,8 @@ $xxl: 1800px;
     .img__wrap {
         text-align: center;
         margin-top: 45px;
+        width: 100vw;
+
         @include resp($md) {
             width: 100%;
             position: absolute;
@@ -185,6 +195,12 @@ $xxl: 1800px;
         }
         img {
             width: 20%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            @include resp ($sm) {
+                display: inline-block;
+            }
         }
     }
 }
