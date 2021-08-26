@@ -1,0 +1,302 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// google fonts
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Rubik&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap");
+
+$ibm: "IBM Plex Sans", sans-serif;
+$rubik: "Rubik", sans-serif;
+$cormo: "Cormorant Garamond", serif;
+
+body {
+    // overflow-x: hidden;
+    font-family: $rubik;
+    overflow-x: hidden;
+}
+// responsive
+$xs: 576px;
+$sm: 768px;
+$md: 992px;
+$lg: 1200px;
+$xl: 1400px;
+$xxl: 1800px;
+
+@mixin resp($width) {
+    @media only screen and (min-width: $width) {
+        @content;
+    }
+}
+
+.full {
+    width: 100%;
+    height: 100%;
+}
+
+#main__container {
+    width: 100vw;
+    height: 100vh;
+}
+
+@mixin fSize($min-vw, $max-vw, $min-font-size, $max-font-size) {
+    $u1: unit($min-vw);
+    $u2: unit($max-vw);
+    $u3: unit($min-font-size);
+    $u4: unit($max-font-size);
+
+    @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+        & {
+            font-size: $min-font-size;
+            @media screen and (min-width: $min-vw) {
+                font-size: calc(
+                    #{$min-font-size} + #{strip-unit(
+                            $max-font-size - $min-font-size
+                        )} *
+                        (
+                            (100vw - #{$min-vw}) / #{strip-unit(
+                                    $max-vw - $min-vw
+                                )}
+                        )
+                );
+            }
+            @media screen and (min-width: $max-vw) {
+                font-size: $max-font-size;
+            }
+        }
+    }
+}
+
+.sm__heading {
+    font-size: calc(70px + (350 - 70) * ((100vw - 300px) / (1900 - 300)));
+    line-height: calc(50px + (300 - 50) * ((100vw - 300px) / (1900 - 300)));
+    font-family: $ibm;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    transition: all 0.6s;
+    @include resp($xs) {
+        max-width: 540px;
+        margin: 0 auto;
+    }
+    @include resp($sm) {
+        max-width: 720px;
+    }
+    @include resp($md) {
+        max-width: 960px;
+    }
+    @include resp($lg) {
+        max-width: 1140px;
+    }
+    @include resp($xl) {
+        max-width: 1320px;
+    }
+    @include resp($xxl) {
+        max-width: 1700px;
+    }
+}
+
+.char {
+    display: inline-block;
+}
+
+#home {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 5000;
+    .container {
+        .round-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            @extend .full;
+            width: 80%;
+            margin: 0 auto;
+            .round {
+                width: 75px;
+                height: 75px;
+                background-color: white;
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+// intro section
+#intro {
+    width: 100%;
+    height: 100vh;
+    .container__wrap {
+        display: flex;
+        flex-flow: column nowrap;
+        @extend .full;
+        @include resp($lg) {
+            justify-content: center;
+        }
+    }
+    // simple container
+    .container {
+        height: 100vh;
+        display: grid;
+        align-items: center;
+        padding: 0;
+        width: 100%;
+        max-width: initial;
+        @include resp($md) {
+            height: 65vh;
+        }
+        @include resp($lg) {
+            height: initial;
+        }
+        .texts {
+            position: relative;
+            h1 {
+                font-size: calc(
+                    80px + (450 - 80) * ((100vw - 300px) / (1900 - 300))
+                );
+                line-height: calc(
+                    70px + (370 - 70) * ((100vw - 300px) / (1900 - 300))
+                );
+                font-family: $ibm;
+                &:nth-child(1) {
+                    margin-bottom: 20px;
+                }
+                text-align: center;
+                @include resp ($sm) {
+                    text-align: left;
+                }
+            }
+            .word {
+                display: inline-flex;
+            }
+        }
+    }
+    // img container
+
+    .img__wrap {
+        // text-align: center;
+        margin-top: 45px;
+        // width: 100vw;
+        width: 100%;
+        @include resp ($md) {
+            margin-top: 0px;
+        }
+        @include resp($md) {
+            width: 100%;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            text-align: right;
+        }
+        img {
+            width: 23.5%;
+            @include resp ($sm) {
+                display: inline-block;
+            }
+            @include resp ($md) {
+                width: 20%;
+            }
+        }
+    }
+}
+
+// about me
+#whoAmI {
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 120px;
+    padding-bottom: 120px;
+    .container {
+        .article {
+            min-height: 100vh;
+            h3 {
+                font-family: $cormo;
+                font-size: calc(
+                    35px + (160 - 35) * ((100vw - 300px) / (1900 - 300))
+                );
+                @include resp(1900px) {
+                    font-size: 165px;
+                }
+            }
+            .name {
+                font-size: 1rem;
+                @include resp(768px) {
+                    font-size: calc(
+                        16px + (50 - 16) * ((100vw - 300px) / (1900 - 300))
+                    );
+                }
+            }
+            &:nth-child(2) {
+                margin-top: 120px;
+            }
+        }
+    }
+}
+
+// skills section
+#skills {
+    .container {
+        .texts {
+            h1 {
+                @extend .sm__heading;
+            }
+        }
+        // round wrapper
+    }
+    // round wrapper
+    .round__wrapper {
+        width: 100%;
+        .rounds {
+            padding: 10px 0px;
+            background-color: black;
+            display: flex;
+            h1 {
+                font-family: $cormo;
+                font-size: calc(
+                    20px + (40 - 20) * ((100vw - 300px) / (1900 - 300))
+                );
+                color: white;
+                border-left: 1.2px solid white;
+                border-right: 1.2px solid white;
+                padding-left: 35px;
+                padding-right: 35px;
+            }
+        }
+    }
+
+    // skills image
+    #skill__img {
+        #skill__list {
+            display: none;
+        }
+    }
+}
+
+#intro .img__container {
+    height: 250px;
+    .img__wrap {
+        width: 100%;
+        text-align: right;
+        img {
+            width: 16.5%;
+        }
+    }
+}
+
+// new style
+.container__wrap {
+    justify-content: center;
+    .container {
+        height: 85vh;
+    }
+}
