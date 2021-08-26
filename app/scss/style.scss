@@ -151,13 +151,16 @@ $xxl: 1800px;
         align-items: center;
         padding: 0;
         width: 100%;
-        max-width: initial;
+        @media screen and (max-width: 992px) {
+            max-width: initial;
+        }
         @include resp($md) {
             height: 65vh;
         }
         @include resp($lg) {
             height: initial;
         }
+
         .texts {
             position: relative;
             h1 {
@@ -172,7 +175,7 @@ $xxl: 1800px;
                     margin-bottom: 20px;
                 }
                 text-align: center;
-                @include resp ($sm) {
+                @include resp($sm) {
                     text-align: left;
                 }
             }
@@ -188,7 +191,7 @@ $xxl: 1800px;
         margin-top: 45px;
         // width: 100vw;
         width: 100%;
-        @include resp ($md) {
+        @include resp($md) {
             margin-top: 0px;
         }
         @include resp($md) {
@@ -200,10 +203,10 @@ $xxl: 1800px;
         }
         img {
             width: 23.5%;
-            @include resp ($sm) {
+            @include resp($sm) {
                 display: inline-block;
             }
-            @include resp ($md) {
+            @include resp($md) {
                 width: 20%;
             }
         }

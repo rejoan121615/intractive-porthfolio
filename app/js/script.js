@@ -169,7 +169,7 @@ ScrollTrigger.matchMedia({
                 "<"
             );
     },
-    "(min-width: 992px) and (max-width: 1365px)": function () {
+    "(min-width: 992px)": function () {
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#intro",
@@ -206,9 +206,16 @@ ScrollTrigger.matchMedia({
                 {
                     width: 100 + "%",
                     duration: 1,
-                    marginTop: -20 + 'vh'
+                    marginTop: -20 + "vh",
                 },
                 "<"
+            )
+            .to(
+                "#intro .container",
+                {
+                    maxWidth: 100 + "%",
+                },
+                "-=0.2"
             );
     },
 });
