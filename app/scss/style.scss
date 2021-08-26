@@ -4,10 +4,6 @@
     box-sizing: border-box;
 }
 
-body {
-    overflow: hidden
-}
-
 // google fonts
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Rubik&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap");
@@ -17,8 +13,9 @@ $rubik: "Rubik", sans-serif;
 $cormo: "Cormorant Garamond", serif;
 
 body {
-    overflow-x: hidden;
+    // overflow-x: hidden;
     font-family: $rubik;
+    overflow-x: hidden;
 }
 // responsive
 $xs: 576px;
@@ -32,10 +29,6 @@ $xxl: 1800px;
     @media only screen and (min-width: $width) {
         @content;
     }
-}
-
-:root {
-    overflow: hidden;
 }
 
 .full {
@@ -113,7 +106,6 @@ $xxl: 1800px;
     display: inline-block;
 }
 
-
 #home {
     width: 100vw;
     height: 100vh;
@@ -164,12 +156,13 @@ $xxl: 1800px;
             height: initial;
         }
         .texts {
+            position: relative;
             h1 {
                 font-size: calc(
-                    90px + (350 - 80) * ((100vw - 300px) / (1900 - 300))
+                    80px + (450 - 80) * ((100vw - 300px) / (1900 - 300))
                 );
                 line-height: calc(
-                    70px + (300 - 70) * ((100vw - 300px) / (1900 - 300))
+                    70px + (370 - 70) * ((100vw - 300px) / (1900 - 300))
                 );
                 font-family: $ibm;
                 &:nth-child(1) {
@@ -179,29 +172,19 @@ $xxl: 1800px;
         }
     }
     // img container
-    .img__container {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        @include resp($sm) {
-            height: 25vh;
-            justify-content: flex-end;
-            width: 90%;
+
+    .img__wrap {
+        text-align: center;
+        margin-top: 45px;
+        @include resp($md) {
+            width: 100%;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            text-align: right;
         }
-        @include resp($lg) {
-            height: initial;
-        }
-        .img__wrap {
-            width: 30%;
-            @include resp($sm) {
-                width: 23%;
-            }
-            @include resp($lg) {
-                width: 15%;
-            }
-            img {
-                width: 100%;
-            }
+        img {
+            width: 20%;
         }
     }
 }
@@ -276,4 +259,27 @@ $xxl: 1800px;
             display: none;
         }
     }
+}
+
+#intro .img__container {
+    height: 250px;
+    .img__wrap {
+        width: 100%;
+        text-align: right;
+        img {
+            width: 16.5%;
+        }
+    }
+}
+
+// new style
+.container__wrap {
+    justify-content: center;
+    .container {
+        height: 85vh;
+    }
+}
+
+#intro .img__wrap img {
+    width: 23.5%;
 }
