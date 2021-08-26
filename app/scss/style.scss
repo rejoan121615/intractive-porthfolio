@@ -217,11 +217,14 @@ $xxl: 1800px;
 #whoAmI {
     width: 100%;
     min-height: 100vh;
-    padding-top: 120px;
-    padding-bottom: 120px;
+    // padding-top: 120px;
+    padding-bottom: 50px;
+    @media screen and (min-width: 425px) {
+        padding-top: 12vw;
+    }
     .container {
         .article {
-            min-height: 100vh;
+            // min-height: 100vh;
             h3 {
                 font-family: $cormo;
                 font-size: calc(
@@ -230,17 +233,29 @@ $xxl: 1800px;
                 @include resp(1900px) {
                     font-size: 165px;
                 }
+                .word {
+                    display: inline-flex;
+                }
             }
             .name {
                 font-size: 1rem;
+                position: relative;
+                margin-top: 40px;
                 @include resp(768px) {
                     font-size: calc(
                         16px + (50 - 16) * ((100vw - 300px) / (1900 - 300))
                     );
                 }
+                // &:before {
+                //     content: "";
+                //     position: absolute;
+                //     width: 100%;
+                //     height: 135%;
+                //     background-color: white;
+                // }
             }
             &:nth-child(2) {
-                margin-top: 120px;
+                margin-top: 80px;
             }
         }
     }

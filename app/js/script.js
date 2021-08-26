@@ -1,15 +1,31 @@
 import { gsap } from "gsap";
 import { EaselPlugin } from "gsap/EaselPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 import Splitting from "splitting";
-import Scrollbar from "smooth-scrollbar";
 // gsap animation
-gsap.registerPlugin(EaselPlugin, ScrollTrigger);
+gsap.registerPlugin(EaselPlugin, ScrollTrigger, CSSRulePlugin);
 
 // install splitting
 Splitting();
 
 // Setup
+const separate = (target) => {
+    const allWords = Splitting({
+        target: document.querySelector(target),
+        by: "words",
+    });
+    let whoEven = [],
+        whoOdd = [];
+    allWords[0].words.forEach((item, index) => {
+        if (index % 2) {
+            whoEven.push(item);
+        } else {
+            whoOdd.push(item);
+        }
+    });
+    return [whoEven, whoOdd];
+};
 
 // let scroller = document.querySelector("#main__container");
 
@@ -122,7 +138,6 @@ ScrollTrigger.matchMedia({
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#intro",
-                markers: true,
                 scrub: 1,
                 start: "0",
                 end: "+=100%",
@@ -164,16 +179,97 @@ ScrollTrigger.matchMedia({
                 "#intro .img__wrap img",
                 {
                     width: 100 + "vw",
-                    y: -25 + "vh",
+                    y: -7 + "vh",
                 },
                 "<"
+            );
+
+        // who am i animation
+        // construct all words
+
+        
+
+        let [firstOne, firstTwo] = separate("#whoAmI .articleOne h3");
+        let [secOne, secTwo] = separate("#whoAmI .articleTwo h3");
+
+        // animations
+        // first comment
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#whoAmI .articleOne",
+                markers: true,
+                start: "55% 50%",
+                pin: true,
+                scrub: 1,
+            },
+        })
+            .fromTo(
+                firstOne,
+                {
+                    opacity: 0,
+                    y: 20,
+                },
+                {
+                    opacity: 1,
+                    duration: 2,
+                    y: 0,
+                    stagger: {
+                        amount: 2,
+                    },
+                }
+            )
+            .fromTo(
+                ".articleOne .name",
+                {
+                    opacity: 0,
+                    y: 25,
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                }
+            );
+        // secound comment
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#whoAmI .articleTwo",
+                markers: true,
+                start: "55% 50%",
+                pin: true,
+                scrub: 1,
+            },
+        })
+            .fromTo(
+                secOne,
+                {
+                    opacity: 0,
+                    y: 20,
+                },
+                {
+                    opacity: 1,
+                    duration: 2,
+                    y: 0,
+                    stagger: {
+                        amount: 2,
+                    },
+                }
+            )
+            .fromTo(
+                ".articleTwo .name",
+                {
+                    opacity: 0,
+                    y: 25,
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                }
             );
     },
     "(min-width: 992px)": function () {
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#intro",
-                markers: true,
                 scrub: 1,
                 start: "0",
                 end: "+=100%",
@@ -225,7 +321,6 @@ ScrollTrigger.matchMedia({
 //         gsap.timeline({
 //             scrollTrigger: {
 //                 trigger: "#intro .texts",
-//                 markers: true,
 //                 start: "0 50",
 //                 end: "70% top",
 //                 scrub: 1,
