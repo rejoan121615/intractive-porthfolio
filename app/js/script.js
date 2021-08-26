@@ -118,114 +118,142 @@ gsap.set("#home", {
 
 // gsap scroll animation
 ScrollTrigger.matchMedia({
-        "(max-width: 991px)": function () {
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: '#intro',
-                markers: true,
-                scrub: 1,
-                start: '50% 50%',
-                end: '100% 10%',
-                // pin: true
-            }
-        }).to("#intro .line__one .char", {
-            paddingLeft: 30,
-            paddingRight: 30
-        }).to("#intro .line__one", {
-            xPercent: -100
-        }, '<')
-        .to("#intro .line__two .char", {
-            paddingLeft: 30,
-            paddingRight: 30
-        }, '<').to("#intro .line__two", {
-            xPercent: 100,
-            onComplete: function () {
-                gsap.set("#intro .container", {
-                    padding: 0
-                })
-            }
-        }, '<')
-            .to("#intro .img__wrap img", {
-                width: 100 + '%',
-                scale: 1.35,
-                yPercent: 10,
-        }, '<')
-    },
-    "(min-width: 992px)": function () {
+    "(max-width: 991px)": function () {
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#intro",
-                // markers: true,
-                start: "center center",
+                markers: true,
                 scrub: 1,
+                start: "0",
+                end: "+=100%",
                 pin: true,
             },
         })
-            .fromTo(
-                "#intro .img__wrap img",
+            .to("#intro .line__one .char", {
+                paddingLeft: 30,
+                paddingRight: 30,
+            })
+            .to(
+                "#intro .line__one",
                 {
-                    width: 23.5 + "%",
+                    xPercent: -100,
                 },
-                {
-                    width: 100 + "%",
-                    duration: 3,
-                    delay: 0.2,
-                }
+                "<"
             )
             .to(
-                "#intro .container",
-                {
-                    maxWidth: 100 + "%",
-                    paddingLeft: 0,
-                    paddingRight: 0,
-                    duration: 1,
-                },
-                "-=0.8"
-            );
-    },
-});
-
-ScrollTrigger.matchMedia({
-    "(min-width: 992px)": function () {
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: "#intro .texts",
-                markers: true,
-                start: "0 50",
-                end: "70% top",
-                scrub: 1,
-            },
-        })
-            .fromTo(
-                "#intro .line__one .char",
-                {
-                    x: 0,
-                    opacity: 1,
-                },
-                {
-                    x: -400,
-                    opacity: 0,
-                    stagger: {
-                        amount: 1,
-                        from: "end",
-                    },
-                }
-            )
-            .fromTo(
                 "#intro .line__two .char",
                 {
-                    y: 0,
-                    // opacity: 1,
+                    paddingLeft: 30,
+                    paddingRight: 30,
                 },
+                "<"
+            )
+            .to(
+                "#intro .line__two",
                 {
-                    y: 350,
-                    // opacity: 0,
+                    xPercent: 100,
+                    onComplete: function () {
+                        gsap.set("#intro .container", {
+                            padding: 0,
+                        });
+                    },
+                },
+                "<"
+            )
+            .to(
+                "#intro .img__wrap img",
+                {
+                    width: 100 + "vw",
+                    y: -25 + "vh",
+                },
+                "<"
+            );
+    },
+    "(min-width: 992px) and (max-width: 1365px)": function () {
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#intro",
+                markers: true,
+                scrub: 1,
+                start: "0",
+                end: "+=100%",
+                pin: true,
+            },
+        })
+            .to("#intro .line__one .char", {
+                y: -60 + "vh",
+                opacity: 0,
+                stagger: {
+                    amount: 0.35,
+                    from: "end",
+                },
+            })
+            .to(
+                "#intro .line__two .char",
+                {
+                    y: 100 + "vh",
+                    opacity: 0,
                     stagger: {
-                        amount: 0.5,
+                        each: 0.08,
                         from: "end",
                     },
+                    // duration: 3,
+                },
+                "<"
+            )
+            .to(
+                "#intro .img__wrap img",
+                {
+                    width: 100 + "%",
+                    duration: 1,
+                    marginTop: -20 + 'vh'
                 },
                 "<"
             );
     },
 });
+
+// ScrollTrigger.matchMedia({
+//     "(min-width: 992px)": function () {
+//         gsap.timeline({
+//             scrollTrigger: {
+//                 trigger: "#intro .texts",
+//                 markers: true,
+//                 start: "0 50",
+//                 end: "70% top",
+//                 scrub: 1,
+//             },
+//         })
+//             .fromTo(
+//                 "#intro .line__one .char",
+//                 {
+//                     x: 0,
+//                     opacity: 1,
+//                 },
+//                 {
+//                     x: -400,
+//                     opacity: 0,
+//                     stagger: {
+//                         amount: 1,
+//                         from: "end",
+//                     },
+//                 }
+//             )
+//             .fromTo(
+//                 "#intro .line__two .char",
+//                 {
+//                     y: 0,
+//                     // opacity: 1,
+//                 },
+//                 {
+//                     y: 350,
+//                     // opacity: 0,
+//                     stagger: {
+//                         amount: 0.5,
+//                         from: "end",
+//                     },
+//                 },
+//                 "<"
+//             );
+//     },
+// });

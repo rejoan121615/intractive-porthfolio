@@ -150,7 +150,9 @@ $xxl: 1800px;
         display: grid;
         align-items: center;
         padding: 0;
-        @include resp($sm) {
+        width: 100%;
+        max-width: initial;
+        @include resp($md) {
             height: 65vh;
         }
         @include resp($lg) {
@@ -182,10 +184,13 @@ $xxl: 1800px;
     // img container
 
     .img__wrap {
-        text-align: center;
+        // text-align: center;
         margin-top: 45px;
-        width: 100vw;
-
+        // width: 100vw;
+        width: 100%;
+        @include resp ($md) {
+            margin-top: 0px;
+        }
         @include resp($md) {
             width: 100%;
             position: absolute;
@@ -194,12 +199,12 @@ $xxl: 1800px;
             text-align: right;
         }
         img {
-            width: 20%;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+            width: 23.5%;
             @include resp ($sm) {
                 display: inline-block;
+            }
+            @include resp ($md) {
+                width: 20%;
             }
         }
     }
@@ -294,8 +299,4 @@ $xxl: 1800px;
     .container {
         height: 85vh;
     }
-}
-
-#intro .img__wrap img {
-    width: 23.5%;
 }
