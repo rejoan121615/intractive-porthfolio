@@ -134,7 +134,7 @@ gsap.set("#home", {
 
 // gsap scroll animation
 ScrollTrigger.matchMedia({
-    "(max-width: 991px)": function () {
+    "(min-width: 0) and (max-width: 575px)": function (param) {
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#intro",
@@ -186,8 +186,6 @@ ScrollTrigger.matchMedia({
 
         // who am i animation
         // construct all words
-
-        
 
         let [firstOne, firstTwo] = separate("#whoAmI .articleOne h3");
         let [secOne, secTwo] = separate("#whoAmI .articleTwo h3");
@@ -266,7 +264,274 @@ ScrollTrigger.matchMedia({
                 }
             );
     },
-    "(min-width: 992px)": function () {
+    "(min-width: 576px) and (max-width: 767px)": function (param) {
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#intro",
+                scrub: 1,
+                start: "0",
+                end: "+=100%",
+                pin: true,
+            },
+        })
+            .to("#intro .line__one .char", {
+                paddingLeft: 30,
+                paddingRight: 30,
+            })
+            .to(
+                "#intro .line__one",
+                {
+                    xPercent: -100,
+                },
+                "<"
+            )
+            .to(
+                "#intro .line__two .char",
+                {
+                    paddingLeft: 30,
+                    paddingRight: 30,
+                },
+                "<"
+            )
+            .to(
+                "#intro .line__two",
+                {
+                    xPercent: 100,
+                    onComplete: function () {
+                        gsap.set("#intro .container", {
+                            padding: 0,
+                        });
+                    },
+                },
+                "<"
+            )
+            .to(
+                "#intro .img__wrap img",
+                {
+                    width: 100 + "vw",
+                    y: -40 + "vh",
+                },
+                "<"
+            );
+
+        // who am i animation
+        // construct all words
+
+        let [firstOne, firstTwo] = separate("#whoAmI .articleOne h3");
+        let [secOne, secTwo] = separate("#whoAmI .articleTwo h3");
+
+        // animations
+        // first comment
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#whoAmI .articleOne",
+                markers: true,
+                start: "40% 50%",
+                pin: true,
+                scrub: 1,
+            },
+        })
+            .fromTo(
+                firstOne,
+                {
+                    opacity: 0,
+                    y: 20,
+                },
+                {
+                    opacity: 1,
+                    duration: 2,
+                    y: 0,
+                    stagger: {
+                        amount: 2,
+                    },
+                }
+            )
+            .fromTo(
+                ".articleOne .name",
+                {
+                    opacity: 0,
+                    y: 25,
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                }
+            );
+        // secound comment
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#whoAmI .articleTwo",
+                markers: true,
+                start: "55% 50%",
+                pin: true,
+                scrub: 1,
+            },
+        })
+            .fromTo(
+                secOne,
+                {
+                    opacity: 0,
+                    y: 20,
+                },
+                {
+                    opacity: 1,
+                    duration: 2,
+                    y: 0,
+                    stagger: {
+                        amount: 2,
+                    },
+                }
+            )
+            .fromTo(
+                ".articleTwo .name",
+                {
+                    opacity: 0,
+                    y: 25,
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                }
+            );
+    },
+    "(min-width: 768px) and (max-width: 991px)": function () {
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#intro",
+                scrub: 1,
+                start: "0",
+                end: "+=100%",
+                pin: true,
+            },
+        })
+            .to("#intro .line__one .char", {
+                paddingLeft: 30,
+                paddingRight: 30,
+            })
+            .to(
+                "#intro .line__one",
+                {
+                    xPercent: -100,
+                },
+                "<"
+            )
+            .to(
+                "#intro .line__two .char",
+                {
+                    paddingLeft: 30,
+                    paddingRight: 30,
+                },
+                "<"
+            )
+            .to(
+                "#intro .line__two",
+                {
+                    xPercent: 100,
+                    onComplete: function () {
+                        gsap.set("#intro .container", {
+                            padding: 0,
+                        });
+                    },
+                },
+                "<"
+            )
+            .to(
+                "#intro .img__wrap img",
+                {
+                    width: 100 + "vw",
+                },
+                "<"
+            )
+            .to(
+                "#intro .img__wrap img",
+                {
+                    y: -30 + "vh",
+                },
+                "-=0.3"
+            );
+
+        // who am i animation
+        // construct all words
+
+        let [firstOne, firstTwo] = separate("#whoAmI .articleOne h3");
+        let [secOne, secTwo] = separate("#whoAmI .articleTwo h3");
+
+        // animations
+        // first comment
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#whoAmI .articleOne",
+                markers: true,
+                start: "35% 50%",
+                pin: true,
+                scrub: 1,
+            },
+        })
+            .fromTo(
+                firstOne,
+                {
+                    opacity: 0,
+                    y: 20,
+                },
+                {
+                    opacity: 1,
+                    duration: 2,
+                    y: 0,
+                    stagger: {
+                        amount: 2,
+                    },
+                }
+            )
+            .fromTo(
+                ".articleOne .name",
+                {
+                    opacity: 0,
+                    y: 25,
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                }
+            );
+        // secound comment
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#whoAmI .articleTwo",
+                markers: true,
+                start: "55% 50%",
+                pin: true,
+                scrub: 1,
+            },
+        })
+            .fromTo(
+                secOne,
+                {
+                    opacity: 0,
+                    y: 20,
+                },
+                {
+                    opacity: 1,
+                    duration: 2,
+                    y: 0,
+                    stagger: {
+                        amount: 2,
+                    },
+                }
+            )
+            .fromTo(
+                ".articleTwo .name",
+                {
+                    opacity: 0,
+                    y: 25,
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                }
+            );
+    },
+    "(min-width: 992px) and (max-width: 1199px)": function () {
+        // intro animation
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#intro",
@@ -312,6 +577,346 @@ ScrollTrigger.matchMedia({
                     maxWidth: 100 + "%",
                 },
                 "-=0.2"
+            );
+        // article animation
+        // who am i animation
+        // construct all words
+
+        let [firstOne, firstTwo] = separate("#whoAmI .articleOne h3");
+        let [secOne, secTwo] = separate("#whoAmI .articleTwo h3");
+
+        // animations
+        // first comment
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#whoAmI .articleOne",
+                markers: true,
+                start: "25% 50%",
+                pin: true,
+                scrub: 1,
+            },
+        })
+            .fromTo(
+                firstOne,
+                {
+                    opacity: 0,
+                    y: 20,
+                },
+                {
+                    opacity: 1,
+                    duration: 2,
+                    y: 0,
+                    stagger: {
+                        amount: 2,
+                    },
+                }
+            )
+            .fromTo(
+                ".articleOne .name",
+                {
+                    opacity: 0,
+                    y: 25,
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                }
+            );
+        // secound comment
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#whoAmI .articleTwo",
+                markers: true,
+                start: "55% 50%",
+                pin: true,
+                scrub: 1,
+            },
+        })
+            .fromTo(
+                secOne,
+                {
+                    opacity: 0,
+                    y: 20,
+                },
+                {
+                    opacity: 1,
+                    duration: 2,
+                    y: 0,
+                    stagger: {
+                        amount: 2,
+                    },
+                }
+            )
+            .fromTo(
+                ".articleTwo .name",
+                {
+                    opacity: 0,
+                    y: 25,
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                }
+            );
+    },
+    "(min-width: 1200px) and (max-width: 1399px)": function (param) {
+        // intro animation
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#intro",
+                scrub: 1,
+                start: "0",
+                end: "+=100%",
+                pin: true,
+            },
+        })
+            .to("#intro .line__one .char", {
+                y: -60 + "vh",
+                opacity: 0,
+                stagger: {
+                    amount: 0.35,
+                    from: "end",
+                },
+            })
+            .to(
+                "#intro .line__two .char",
+                {
+                    y: 100 + "vh",
+                    opacity: 0,
+                    stagger: {
+                        each: 0.08,
+                        from: "end",
+                    },
+                    // duration: 3,
+                },
+                "<"
+            )
+            .to(
+                "#intro .img__wrap img",
+                {
+                    width: 100 + "%",
+                    duration: 1,
+                    marginTop: -20 + "vh",
+                },
+                "<"
+            )
+            .to(
+                "#intro .container",
+                {
+                    maxWidth: 100 + "%",
+                },
+                "-=0.2"
+            );
+        // article animation
+        // who am i animation
+        // construct all words
+
+        let [firstOne, firstTwo] = separate("#whoAmI .articleOne h3");
+        let [secOne, secTwo] = separate("#whoAmI .articleTwo h3");
+
+        // animations
+        // first comment
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#whoAmI .articleOne",
+                start: "0% 15%",
+                end: "120% 100%",
+                // pin: true,
+                scrub: 1,
+            },
+        })
+            .fromTo(
+                firstOne,
+                {
+                    opacity: 0,
+                    y: 20,
+                },
+                {
+                    opacity: 1,
+                    duration: 2,
+                    y: 0,
+                    stagger: {
+                        amount: 2,
+                    },
+                }
+            )
+            .fromTo(
+                ".articleOne .name",
+                {
+                    opacity: 0,
+                    y: 25,
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                }
+            );
+        // secound comment
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#whoAmI .articleTwo",
+                markers: true,
+                start: "10% 20%",
+                end: "50% 30%",
+                scrub: 1,
+            },
+        })
+            .fromTo(
+                secOne,
+                {
+                    opacity: 0,
+                    y: 20,
+                },
+                {
+                    opacity: 1,
+                    duration: 2,
+                    y: 0,
+                    stagger: {
+                        amount: 2,
+                    },
+                }
+            )
+            .fromTo(
+                ".articleTwo .name",
+                {
+                    opacity: 0,
+                    y: 25,
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                }
+            );
+    },
+    "(min-width: 1400px) and (max-width: 1800px)": function (param) {},
+    "(min-width: 1400px)": function () {
+        // intro animation
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#intro",
+                scrub: 1,
+                start: "0",
+                end: "+=100%",
+                pin: true,
+            },
+        })
+            .to("#intro .line__one .char", {
+                y: -60 + "vh",
+                opacity: 0,
+                stagger: {
+                    amount: 0.35,
+                    from: "end",
+                },
+            })
+            .to(
+                "#intro .line__two .char",
+                {
+                    y: 100 + "vh",
+                    opacity: 0,
+                    stagger: {
+                        each: 0.08,
+                        from: "end",
+                    },
+                    // duration: 3,
+                },
+                "<"
+            )
+            .to(
+                "#intro .img__wrap img",
+                {
+                    width: 100 + "%",
+                    duration: 1,
+                    marginTop: -20 + "vh",
+                },
+                "<"
+            )
+            .to(
+                "#intro .container",
+                {
+                    maxWidth: 100 + "%",
+                },
+                "-=0.2"
+            );
+        // article animation
+        // who am i animation
+        // construct all words
+
+        let [firstOne, firstTwo] = separate("#whoAmI .articleOne h3");
+        let [secOne, secTwo] = separate("#whoAmI .articleTwo h3");
+
+        // animations
+        // first comment
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#whoAmI .articleOne",
+                start: "0% 25%",
+                end: "120% 100%",
+                // pin: true,
+                scrub: 1,
+                markers: true
+            },
+        })
+            .fromTo(
+                firstOne,
+                {
+                    opacity: 0,
+                    y: 20,
+                },
+                {
+                    opacity: 1,
+                    duration: 2,
+                    y: 0,
+                    stagger: {
+                        amount: 2,
+                    },
+                }
+            )
+            .fromTo(
+                ".articleOne .name",
+                {
+                    opacity: 0,
+                    y: 25,
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                }
+            );
+        // secound comment
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#whoAmI .articleTwo",
+                // markers: true,
+                start: "10% 20%",
+                end: "50% 30%",
+                scrub: 1,
+            },
+        })
+            .fromTo(
+                secOne,
+                {
+                    opacity: 0,
+                    y: 20,
+                },
+                {
+                    opacity: 1,
+                    duration: 2,
+                    y: 0,
+                    stagger: {
+                        amount: 2,
+                    },
+                }
+            )
+            .fromTo(
+                ".articleTwo .name",
+                {
+                    opacity: 0,
+                    y: 25,
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                }
             );
     },
 });

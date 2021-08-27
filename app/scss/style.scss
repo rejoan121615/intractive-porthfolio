@@ -220,7 +220,13 @@ $xxl: 1800px;
     // padding-top: 120px;
     padding-bottom: 50px;
     @media screen and (min-width: 425px) {
-        padding-top: 12vw;
+        padding-top: 25vw;
+    }
+    @include resp(500px) {
+        padding-top: 200px;
+    }
+    @include resp(768px) {
+        padding-top: 45vw;
     }
     .container {
         .article {
@@ -254,8 +260,14 @@ $xxl: 1800px;
                 //     background-color: white;
                 // }
             }
-            &:nth-child(2) {
-                margin-top: 80px;
+        }
+        .articleTwo {
+            padding-top: 125px;
+            @include resp ($md) {
+                padding-top: 140px;
+            }
+            @include resp ($xl) {
+                padding-top: 200px;
             }
         }
     }
