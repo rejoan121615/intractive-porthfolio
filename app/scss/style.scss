@@ -275,10 +275,13 @@ $xxl: 1800px;
 
 // skills section
 #skills {
+    padding-top: 75px;
     .container {
         .texts {
+            padding-bottom: 75px;
             h1 {
                 @extend .sm__heading;
+                text-align: center;
             }
         }
         // round wrapper
@@ -286,28 +289,36 @@ $xxl: 1800px;
     // round wrapper
     .round__wrapper {
         width: 100%;
+        padding-top: 50px;
         .rounds {
             padding: 10px 0px;
             background-color: black;
-            display: flex;
+
+            @keyframes color {
+                from {
+                    transform: translateX(100);
+                }
+                to {
+                    transform: translateX(250);
+                }
+            }
             h1 {
                 font-family: $cormo;
                 font-size: calc(
                     20px + (40 - 20) * ((100vw - 300px) / (1900 - 300))
                 );
                 color: white;
-                border-left: 1.2px solid white;
-                border-right: 1.2px solid white;
-                padding-left: 35px;
-                padding-right: 35px;
+                width: 410px;
+                animation: color 4s linear 3s 12 backwards;
             }
         }
     }
 
     // skills image
     #skill__img {
+        padding-top: 50px;
         #skill__list {
-            display: none;
+            // display: none;
         }
     }
 }

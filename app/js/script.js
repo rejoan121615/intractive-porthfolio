@@ -3,6 +3,7 @@ import { EaselPlugin } from "gsap/EaselPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 import Splitting from "splitting";
+import './skill'
 // gsap animation
 gsap.registerPlugin(EaselPlugin, ScrollTrigger, CSSRulePlugin);
 
@@ -134,7 +135,7 @@ gsap.set("#home", {
 
 // gsap scroll animation
 ScrollTrigger.matchMedia({
-    "(min-width: 0) and (max-width: 575px)": function (param) {
+    "(max-width: 575px)": function () {
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#intro",
@@ -195,7 +196,6 @@ ScrollTrigger.matchMedia({
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#whoAmI .articleOne",
-                markers: true,
                 start: "55% 50%",
                 pin: true,
                 scrub: 1,
@@ -231,7 +231,6 @@ ScrollTrigger.matchMedia({
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#whoAmI .articleTwo",
-                markers: true,
                 start: "55% 50%",
                 pin: true,
                 scrub: 1,
@@ -325,7 +324,7 @@ ScrollTrigger.matchMedia({
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#whoAmI .articleOne",
-                markers: true,
+
                 start: "40% 50%",
                 pin: true,
                 scrub: 1,
@@ -361,7 +360,7 @@ ScrollTrigger.matchMedia({
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#whoAmI .articleTwo",
-                markers: true,
+
                 start: "55% 50%",
                 pin: true,
                 scrub: 1,
@@ -461,7 +460,7 @@ ScrollTrigger.matchMedia({
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#whoAmI .articleOne",
-                markers: true,
+
                 start: "35% 50%",
                 pin: true,
                 scrub: 1,
@@ -497,7 +496,7 @@ ScrollTrigger.matchMedia({
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#whoAmI .articleTwo",
-                markers: true,
+
                 start: "55% 50%",
                 pin: true,
                 scrub: 1,
@@ -590,7 +589,7 @@ ScrollTrigger.matchMedia({
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#whoAmI .articleOne",
-                markers: true,
+
                 start: "25% 50%",
                 pin: true,
                 scrub: 1,
@@ -626,7 +625,7 @@ ScrollTrigger.matchMedia({
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#whoAmI .articleTwo",
-                markers: true,
+
                 start: "55% 50%",
                 pin: true,
                 scrub: 1,
@@ -755,7 +754,7 @@ ScrollTrigger.matchMedia({
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#whoAmI .articleTwo",
-                markers: true,
+
                 start: "10% 20%",
                 end: "50% 30%",
                 scrub: 1,
@@ -853,7 +852,6 @@ ScrollTrigger.matchMedia({
                 end: "120% 100%",
                 // pin: true,
                 scrub: 1,
-                markers: true
             },
         })
             .fromTo(
@@ -886,7 +884,7 @@ ScrollTrigger.matchMedia({
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#whoAmI .articleTwo",
-                // markers: true,
+
                 start: "10% 20%",
                 end: "50% 30%",
                 scrub: 1,
@@ -964,3 +962,38 @@ ScrollTrigger.matchMedia({
 //             );
 //     },
 // });
+
+
+ScrollTrigger.matchMedia({
+    "(min-width: 0px)": function () {
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '#skills .container',
+                // markers: true,
+                start: '15% 90%',
+                end: 'center center',
+                scrub: 1
+            }   
+        }).fromTo("#skills .texts .char", {
+            x: 100 + 'vw',
+            scale: 1.5,
+            letterSpacing: 10
+        }, {
+            x: 0,
+            scale: 1,
+            letterSpacing: 'initial',
+            stagger: {
+                amount: 0.5
+            }
+        })
+        // round animation 
+        gsap.fromTo("#skills .rounds h1", {
+            xPercent: 100
+        }, {
+            xPercent: -90,
+            duration: 10,
+            repeat: -1,
+            ease: 'linear'
+        })
+    }
+})
