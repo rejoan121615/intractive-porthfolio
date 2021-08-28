@@ -589,8 +589,7 @@ ScrollTrigger.matchMedia({
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#whoAmI .articleOne",
-
-                start: "25% 50%",
+                start: "25% 30%",
                 pin: true,
                 scrub: 1,
             },
@@ -719,8 +718,8 @@ ScrollTrigger.matchMedia({
             scrollTrigger: {
                 trigger: "#whoAmI .articleOne",
                 start: "0% 15%",
-                end: "120% 100%",
-                // pin: true,
+                end: "100% 10%",
+                pin: true,
                 scrub: 1,
             },
         })
@@ -754,10 +753,10 @@ ScrollTrigger.matchMedia({
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#whoAmI .articleTwo",
-
-                start: "10% 20%",
+                start: "0% 20%",
                 end: "50% 30%",
                 scrub: 1,
+                pin: true,
             },
         })
             .fromTo(
@@ -787,7 +786,7 @@ ScrollTrigger.matchMedia({
                 }
             );
     },
-    "(min-width: 1400px) and (max-width: 1800px)": function (param) {},
+    // "(min-width: 1400px) and (max-width: 1800px)": function (param) {},
     "(min-width: 1400px)": function () {
         // intro animation
         gsap.timeline({

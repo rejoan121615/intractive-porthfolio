@@ -64,115 +64,697 @@ gsap.set(
         scale: 0,
     }
 );
-gsap.timeline({
-    scrollTrigger: {
-        trigger: "#skill__img",
-        start: "center center",
-        end: "bottom 50%",
-        scrub: 1,
-    },
-})
-    .to("#first_2 .color__line, #first_4 .color__line, #first .color__line", {
-        strokeDashoffset: 0,
-        duration: 1,
-        delay: 1,
-    })
-    .to(
-        "#js .forthground, #html .forthground , #figma .forthground",
-        {
-            scale: 1.38,
-            duration: 0.5,
-            onStart: function () {
-                const ele = "#figmapop, #jspop, #htmlpop";
-                gsap.timeline()
-                    .to(ele, {
-                        display: "block",
-                    })
-                    .to(ele, {
-                        opacity: 1,
-                    });
-            },
-        },
-        "=-0.2"
-    );
 
-gsap.timeline({
-    scrollTrigger: {
-        trigger: "#skill__img",
-        end: "bottom top",
-        start: "bottom center",
-        scrub: 1,
-    },
-})
-    .to(
-        "#first_3 .color__line, #secound .color__line, #secound_2 .color__line, #secound_4 .color__line, #secound_3 .color__line,#third_2 .color__line",
-        {
-            strokeDashoffset: 0,
-            duration: 1,
-        }
-    )
-    .to(
-        "#bootstrap .forthground, #css .forthground , #jquery .forthground, #gsap .forthground, #git .forthground",
-        {
-            scale: 1.38,
-            duration: 0.5,
-            onStart: function () {
-                const ele =
-                    "#bootstrappop, #csspop, #jquerypop, #gsappop, #gitpop";
-                gsap.timeline()
-                    .to(ele, {
-                        display: "block",
-                    })
-                    .to(ele, {
-                        opacity: 1,
-                    });
+ScrollTrigger.matchMedia({
+    "(min-width: 0px) and (max-width: 399px)": function () {
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#skill__img",
+                start: "380% 90%",
+                end: "+=120% 20%",
+                scrub: 1,
+                markers: true,
             },
-        },
-        "=-0.2"
-    );
-
-gsap.timeline({
-    scrollTrigger: {
-        trigger: "#skill__img",
-        start: "bottom 0%",
-        end: "110% top",
-        scrub: 1,
+        })
+            .to(
+                "#first_2 .color__line, #first_4 .color__line, #first .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                    delay: 1,
+                }
+            )
+            .to(
+                "#js .forthground, #html .forthground , #figma .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele = "#figmapop, #jspop, #htmlpop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            )
+            .to(
+                "#first_3 .color__line, #secound .color__line, #secound_2 .color__line, #secound_4 .color__line, #secound_3 .color__line,#third_2 .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                }
+            )
+            .to(
+                "#bootstrap .forthground, #css .forthground , #jquery .forthground, #gsap .forthground, #git .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele =
+                            "#bootstrappop, #csspop, #jquerypop, #gsappop, #gitpop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            )
+            .fromTo(
+                "#third .color__line",
+                {
+                    strokeDashoffset: -278,
+                },
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                }
+            )
+            .to(
+                "#third_3 .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                },
+                "<"
+            )
+            .to(
+                "#scss .forthground, #svg_2 .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele = "#scsspop, #jspop, #svg_2pop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            );
     },
-})
-    .fromTo(
-        "#third .color__line",
-        {
-            strokeDashoffset: -278,
-        },
-        {
-            strokeDashoffset: 0,
-            duration: 1,
-        }
-    )
-    .to(
-        "#third_3 .color__line",
-        {
-            strokeDashoffset: 0,
-            duration: 1,
-        },
-        "<"
-    )
-    .to(
-        "#scss .forthground, #svg_2 .forthground",
-        {
-            scale: 1.38,
-            duration: 0.5,
-            onStart: function () {
-                const ele = "#scsspop, #jspop, #svg_2pop";
-                gsap.timeline()
-                    .to(ele, {
-                        display: "block",
-                    })
-                    .to(ele, {
-                        opacity: 1,
-                    });
+    "(min-width: 400px) and (max-width: 599px)": function () {
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#skill__img",
+                start: "320% 90%",
+                end: "+=120% 20%",
+                scrub: 1,
+                markers: true,
             },
-        },
-        "=-0.2"
-    );
-
+        })
+            .to(
+                "#first_2 .color__line, #first_4 .color__line, #first .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                    delay: 1,
+                }
+            )
+            .to(
+                "#js .forthground, #html .forthground , #figma .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele = "#figmapop, #jspop, #htmlpop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            )
+            .to(
+                "#first_3 .color__line, #secound .color__line, #secound_2 .color__line, #secound_4 .color__line, #secound_3 .color__line,#third_2 .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                }
+            )
+            .to(
+                "#bootstrap .forthground, #css .forthground , #jquery .forthground, #gsap .forthground, #git .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele =
+                            "#bootstrappop, #csspop, #jquerypop, #gsappop, #gitpop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            )
+            .fromTo(
+                "#third .color__line",
+                {
+                    strokeDashoffset: -278,
+                },
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                }
+            )
+            .to(
+                "#third_3 .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                },
+                "<"
+            )
+            .to(
+                "#scss .forthground, #svg_2 .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele = "#scsspop, #jspop, #svg_2pop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            );
+    },
+    "(min-width: 600px) and (max-width: 767px)": function () {
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#skill__img",
+                start: "290% 90%",
+                end: "+=120% 20%",
+                scrub: 1,
+                markers: true,
+            },
+        })
+            .to(
+                "#first_2 .color__line, #first_4 .color__line, #first .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                    delay: 1,
+                }
+            )
+            .to(
+                "#js .forthground, #html .forthground , #figma .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele = "#figmapop, #jspop, #htmlpop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            )
+            .to(
+                "#first_3 .color__line, #secound .color__line, #secound_2 .color__line, #secound_4 .color__line, #secound_3 .color__line,#third_2 .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                }
+            )
+            .to(
+                "#bootstrap .forthground, #css .forthground , #jquery .forthground, #gsap .forthground, #git .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele =
+                            "#bootstrappop, #csspop, #jquerypop, #gsappop, #gitpop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            )
+            .fromTo(
+                "#third .color__line",
+                {
+                    strokeDashoffset: -278,
+                },
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                }
+            )
+            .to(
+                "#third_3 .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                },
+                "<"
+            )
+            .to(
+                "#scss .forthground, #svg_2 .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele = "#scsspop, #jspop, #svg_2pop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            );
+    },
+    "(min-width: 768px) and (max-width: 991px)": function () {
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#skill__img",
+                start: "215% 90%",
+                end: "+=210% 0%",
+                scrub: 1,
+                markers: true,
+            },
+        })
+            .to(
+                "#first_2 .color__line, #first_4 .color__line, #first .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                    delay: 1,
+                }
+            )
+            .to(
+                "#js .forthground, #html .forthground , #figma .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele = "#figmapop, #jspop, #htmlpop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            )
+            .to(
+                "#first_3 .color__line, #secound .color__line, #secound_2 .color__line, #secound_4 .color__line, #secound_3 .color__line,#third_2 .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                }
+            )
+            .to(
+                "#bootstrap .forthground, #css .forthground , #jquery .forthground, #gsap .forthground, #git .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele =
+                            "#bootstrappop, #csspop, #jquerypop, #gsappop, #gitpop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            )
+            .fromTo(
+                "#third .color__line",
+                {
+                    strokeDashoffset: -278,
+                },
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                }
+            )
+            .to(
+                "#third_3 .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                },
+                "<"
+            )
+            .to(
+                "#scss .forthground, #svg_2 .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele = "#scsspop, #jspop, #svg_2pop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            );
+    },
+    "(min-width: 992px) and (max-width: 1199px)": function () {
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#skill__img",
+                start: "170% 100%",
+                end: "+=650% 0%",
+                scrub: 1,
+                markers: true,
+            },
+        })
+            .to(
+                "#first_2 .color__line, #first_4 .color__line, #first .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                    delay: 1,
+                }
+            )
+            .to(
+                "#js .forthground, #html .forthground , #figma .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele = "#figmapop, #jspop, #htmlpop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            )
+            .to(
+                "#first_3 .color__line, #secound .color__line, #secound_2 .color__line, #secound_4 .color__line, #secound_3 .color__line,#third_2 .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                }
+            )
+            .to(
+                "#bootstrap .forthground, #css .forthground , #jquery .forthground, #gsap .forthground, #git .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele =
+                            "#bootstrappop, #csspop, #jquerypop, #gsappop, #gitpop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            )
+            .fromTo(
+                "#third .color__line",
+                {
+                    strokeDashoffset: -278,
+                },
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                }
+            )
+            .to(
+                "#third_3 .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                },
+                "<"
+            )
+            .to(
+                "#scss .forthground, #svg_2 .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele = "#scsspop, #jspop, #svg_2pop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            );
+    },
+    "(min-width: 1200px) and (max-width: 1399px)": function () {
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#skill__img",
+                start: "110% 100%",
+                end: "+=750% 0%",
+                scrub: 1,
+            },
+        })
+            .to(
+                "#first_2 .color__line, #first_4 .color__line, #first .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                    delay: 1,
+                }
+            )
+            .to(
+                "#js .forthground, #html .forthground , #figma .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele = "#figmapop, #jspop, #htmlpop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            )
+            .to(
+                "#first_3 .color__line, #secound .color__line, #secound_2 .color__line, #secound_4 .color__line, #secound_3 .color__line,#third_2 .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                }
+            )
+            .to(
+                "#bootstrap .forthground, #css .forthground , #jquery .forthground, #gsap .forthground, #git .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele =
+                            "#bootstrappop, #csspop, #jquerypop, #gsappop, #gitpop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            )
+            .fromTo(
+                "#third .color__line",
+                {
+                    strokeDashoffset: -278,
+                },
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                }
+            )
+            .to(
+                "#third_3 .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                },
+                "<"
+            )
+            .to(
+                "#scss .forthground, #svg_2 .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele = "#scsspop, #jspop, #svg_2pop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            );
+    },
+    "(min-width: 1400px) and (max-width: 1799px)": function () {
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#skill__img",
+                start: "110% 100%",
+                end: "+=750% 0%",
+                scrub: 1,
+            },
+        })
+            .to(
+                "#first_2 .color__line, #first_4 .color__line, #first .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                    delay: 1,
+                }
+            )
+            .to(
+                "#js .forthground, #html .forthground , #figma .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele = "#figmapop, #jspop, #htmlpop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            )
+            .to(
+                "#first_3 .color__line, #secound .color__line, #secound_2 .color__line, #secound_4 .color__line, #secound_3 .color__line,#third_2 .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                }
+            )
+            .to(
+                "#bootstrap .forthground, #css .forthground , #jquery .forthground, #gsap .forthground, #git .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele =
+                            "#bootstrappop, #csspop, #jquerypop, #gsappop, #gitpop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            )
+            .fromTo(
+                "#third .color__line",
+                {
+                    strokeDashoffset: -278,
+                },
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                }
+            )
+            .to(
+                "#third_3 .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                },
+                "<"
+            )
+            .to(
+                "#scss .forthground, #svg_2 .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele = "#scsspop, #jspop, #svg_2pop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            );
+    },
+});
