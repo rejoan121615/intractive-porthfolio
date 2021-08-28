@@ -659,13 +659,113 @@ ScrollTrigger.matchMedia({
                 "=-0.2"
             );
     },
-    "(min-width: 1400px) and (max-width: 1799px)": function () {
+    "(min-width: 1400px) and (max-width: 1649px)": function () {
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#skill__img",
-                start: "110% 100%",
-                end: "+=750% 0%",
+                start: "120% 80%",
+                end: "165% 0%",
                 scrub: 1,
+                markers: true,
+            },
+        })
+            .to(
+                "#first_2 .color__line, #first_4 .color__line, #first .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                    delay: 1,
+                }
+            )
+            .to(
+                "#js .forthground, #html .forthground , #figma .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele = "#figmapop, #jspop, #htmlpop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            )
+            .to(
+                "#first_3 .color__line, #secound .color__line, #secound_2 .color__line, #secound_4 .color__line, #secound_3 .color__line,#third_2 .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                }
+            )
+            .to(
+                "#bootstrap .forthground, #css .forthground , #jquery .forthground, #gsap .forthground, #git .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele =
+                            "#bootstrappop, #csspop, #jquerypop, #gsappop, #gitpop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            )
+            .fromTo(
+                "#third .color__line",
+                {
+                    strokeDashoffset: -278,
+                },
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                }
+            )
+            .to(
+                "#third_3 .color__line",
+                {
+                    strokeDashoffset: 0,
+                    duration: 1,
+                },
+                "<"
+            )
+            .to(
+                "#scss .forthground, #svg_2 .forthground",
+                {
+                    scale: 1.38,
+                    duration: 0.5,
+                    onStart: function () {
+                        const ele = "#scsspop, #jspop, #svg_2pop";
+                        gsap.timeline()
+                            .to(ele, {
+                                display: "block",
+                            })
+                            .to(ele, {
+                                opacity: 1,
+                            });
+                    },
+                },
+                "=-0.2"
+            );
+    },
+    "(min-width: 1650px)": function () {
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#skill__img",
+                start: "120% 80%",
+                end: "165% 0%",
+                scrub: 1,
+                markers: true,
             },
         })
             .to(

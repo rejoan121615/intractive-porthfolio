@@ -3,7 +3,7 @@ import { EaselPlugin } from "gsap/EaselPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 import Splitting from "splitting";
-import './skill'
+import "./skill";
 // gsap animation
 gsap.registerPlugin(EaselPlugin, ScrollTrigger, CSSRulePlugin);
 
@@ -787,7 +787,7 @@ ScrollTrigger.matchMedia({
             );
     },
     // "(min-width: 1400px) and (max-width: 1800px)": function (param) {},
-    "(min-width: 1400px)": function () {
+    "(min-width: 1400px) and (max-width: 1599px)": function () {
         // intro animation
         gsap.timeline({
             scrollTrigger: {
@@ -802,7 +802,7 @@ ScrollTrigger.matchMedia({
                 y: -60 + "vh",
                 opacity: 0,
                 stagger: {
-                    amount: 0.35,
+                    amount: 0.2,
                     from: "end",
                 },
             })
@@ -812,7 +812,7 @@ ScrollTrigger.matchMedia({
                     y: 100 + "vh",
                     opacity: 0,
                     stagger: {
-                        each: 0.08,
+                        each: 0.065,
                         from: "end",
                     },
                     // duration: 3,
@@ -847,10 +847,10 @@ ScrollTrigger.matchMedia({
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#whoAmI .articleOne",
-                start: "0% 25%",
-                end: "120% 100%",
-                // pin: true,
+                start: "0% 30%",
+                end: "120% 50%",
                 scrub: 1,
+                pin: true,
             },
         })
             .fromTo(
@@ -883,10 +883,139 @@ ScrollTrigger.matchMedia({
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#whoAmI .articleTwo",
-
-                start: "10% 20%",
-                end: "50% 30%",
+                start: "60% 50%",
+                end: "100% 0%",
                 scrub: 1,
+                pin: true,
+            },
+        })
+            .fromTo(
+                secOne,
+                {
+                    opacity: 0,
+                    y: 20,
+                },
+                {
+                    opacity: 1,
+                    duration: 2,
+                    y: 0,
+                    stagger: {
+                        amount: 2,
+                    },
+                }
+            )
+            .fromTo(
+                ".articleTwo .name",
+                {
+                    opacity: 0,
+                    y: 25,
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                }
+            );
+    },
+    "(min-width: 1600px)": function () {
+        // intro animation
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#intro",
+                scrub: 1,
+                start: "0",
+                end: "+=100%",
+                pin: true,
+            },
+        })
+            .to("#intro .line__one .char", {
+                y: -60 + "vh",
+                opacity: 0,
+                stagger: {
+                    amount: 0.2,
+                    from: "end",
+                },
+            })
+            .to(
+                "#intro .line__two .char",
+                {
+                    y: 100 + "vh",
+                    opacity: 0,
+                    stagger: {
+                        each: 0.065,
+                        from: "end",
+                    },
+                    // duration: 3,
+                },
+                "<"
+            )
+            .to(
+                "#intro .img__wrap img",
+                {
+                    width: 100 + "%",
+                    duration: 1,
+                    marginTop: -20 + "vh",
+                },
+                "<"
+            )
+            .to(
+                "#intro .container",
+                {
+                    maxWidth: 100 + "%",
+                },
+                "-=0.2"
+            );
+        // article animation
+        // who am i animation
+        // construct all words
+
+        let [firstOne, firstTwo] = separate("#whoAmI .articleOne h3");
+        let [secOne, secTwo] = separate("#whoAmI .articleTwo h3");
+
+        // animations
+        // first comment
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#whoAmI .articleOne",
+                start: "0% 30%",
+                end: "120% 50%",
+                scrub: 1,
+                pin: true,
+            },
+        })
+            .fromTo(
+                firstOne,
+                {
+                    opacity: 0,
+                    y: 20,
+                },
+                {
+                    opacity: 1,
+                    duration: 2,
+                    y: 0,
+                    stagger: {
+                        amount: 2,
+                    },
+                }
+            )
+            .fromTo(
+                ".articleOne .name",
+                {
+                    opacity: 0,
+                    y: 25,
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                }
+            );
+        // secound comment
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#whoAmI .articleTwo",
+                start: "60% 50%",
+                end: "100% 0%",
+                scrub: 1,
+                pin: true,
             },
         })
             .fromTo(
@@ -962,37 +1091,44 @@ ScrollTrigger.matchMedia({
 //     },
 // });
 
-
 ScrollTrigger.matchMedia({
     "(min-width: 0px)": function () {
         gsap.timeline({
             scrollTrigger: {
-                trigger: '#skills .container',
+                trigger: "#skills .container",
                 // markers: true,
-                start: '15% 90%',
-                end: 'center center',
-                scrub: 1
-            }   
-        }).fromTo("#skills .texts .char", {
-            x: 100 + 'vw',
-            scale: 1.5,
-            letterSpacing: 10
-        }, {
-            x: 0,
-            scale: 1,
-            letterSpacing: 'initial',
-            stagger: {
-                amount: 0.5
+                start: "15% 90%",
+                end: "center center",
+                scrub: 1,
+            },
+        }).fromTo(
+            "#skills .texts .char",
+            {
+                x: 100 + "vw",
+                scale: 1.5,
+                letterSpacing: 10,
+            },
+            {
+                x: 0,
+                scale: 1,
+                letterSpacing: "initial",
+                stagger: {
+                    amount: 0.5,
+                },
             }
-        })
-        // round animation 
-        gsap.fromTo("#skills .rounds h1", {
-            xPercent: 100
-        }, {
-            xPercent: -90,
-            duration: 10,
-            repeat: -1,
-            ease: 'linear'
-        })
-    }
-})
+        );
+        // round animation
+        gsap.fromTo(
+            "#skills .rounds h1",
+            {
+                xPercent: 100,
+            },
+            {
+                xPercent: -90,
+                duration: 10,
+                repeat: -1,
+                ease: "linear",
+            }
+        );
+    },
+});

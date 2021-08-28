@@ -171,6 +171,14 @@ $xxl: 1800px;
                     70px + (370 - 70) * ((100vw - 300px) / (1900 - 300))
                 );
                 font-family: $ibm;
+                @include resp(1600px) {
+                    font-size: 23.5rem;
+                    line-height: 20rem;
+                }
+                @include resp(1800px) {
+                    font-size: 27rem;
+                    line-height: 23rem;
+                }
                 &:nth-child(1) {
                     margin-bottom: 20px;
                 }
@@ -209,7 +217,7 @@ $xxl: 1800px;
             @include resp($md) {
                 width: 20%;
             }
-            @include resp ($lg) {
+            @include resp($lg) {
                 width: 22%;
             }
         }
@@ -235,21 +243,32 @@ $xxl: 1800px;
     @include resp($md) {
         padding-top: 530px;
     }
-    @include resp ($lg) {
+    @include resp($lg) {
         padding-top: 630px;
     }
-    @include resp (1400px) {
+    @include resp(1400px) {
         padding-top: 690px;
+    }
+    @include resp(1600px) {
+        padding-top: 770px;
+    }
+    @include resp(1800px) {
+        padding-top: 830px;
     }
     .container {
         .article {
             // min-height: 100vh;
+            @include resp(1800px) {
+                width: 85%;
+                margin-left: auto;
+                margin-right: auto;
+            }
             h3 {
                 font-family: $cormo;
                 font-size: calc(
                     35px + (160 - 35) * ((100vw - 300px) / (1900 - 300))
                 );
-                @include resp ($sm) {
+                @include resp($sm) {
                     font-size: 70px;
                 }
                 @include resp(1900px) {
@@ -268,6 +287,9 @@ $xxl: 1800px;
                         16px + (50 - 16) * ((100vw - 300px) / (1900 - 300))
                     );
                 }
+                @include resp(1800px) {
+                    margin-top: 65px;
+                }
                 // &:before {
                 //     content: "";
                 //     position: absolute;
@@ -279,7 +301,7 @@ $xxl: 1800px;
         }
         .articleTwo {
             padding-top: 125px;
-            @include resp ($sm) {
+            @include resp($sm) {
                 padding-top: 175px;
             }
             @include resp($md) {
@@ -296,7 +318,7 @@ $xxl: 1800px;
 #skills {
     padding-top: 75px;
     padding-bottom: 75px;
-    @include resp ($sm) {
+    @include resp($sm) {
         padding-top: 100px;
         padding-bottom: 100px;
     }
@@ -314,13 +336,15 @@ $xxl: 1800px;
     .round__wrapper {
         width: 100%;
         padding-top: 50px;
-        @include resp ($sm) {
+        @include resp($sm) {
             padding-top: 80px;
+        }
+        @include resp(1400px) {
+            padding-top: 120px;
         }
         .rounds {
             padding: 10px 0px;
             background-color: black;
-
             @keyframes color {
                 from {
                     transform: translateX(100);
@@ -355,7 +379,7 @@ $xxl: 1800px;
                 font-size: 0.7rem;
                 display: none;
                 opacity: 0;
-                @include resp (600px) {
+                @include resp(600px) {
                     font-size: 0.95rem;
                 }
             }
