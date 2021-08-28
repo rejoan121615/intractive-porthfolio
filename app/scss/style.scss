@@ -258,11 +258,6 @@ $xxl: 1800px;
     .container {
         .article {
             // min-height: 100vh;
-            @include resp(1800px) {
-                width: 85%;
-                margin-left: auto;
-                margin-right: auto;
-            }
             h3 {
                 font-family: $cormo;
                 font-size: calc(
@@ -381,6 +376,24 @@ $xxl: 1800px;
                 opacity: 0;
                 @include resp(600px) {
                     font-size: 0.95rem;
+                }
+                @include resp ($sm) {
+                    font-size: 1rem;
+                    padding: 6px 10px;
+                }
+                @include resp ($md) {
+                    font-size: 1.1rem;
+                }
+                @include resp  ($lg) {
+                    font-size: 1.2rem;
+                    padding: 8px 12px;
+                }
+                @include resp ($xl) {
+                    font-size: 1.25rem;
+                }
+                @include resp($xxl) {
+                    font-size: 1.3rem;
+                    padding: 8px 15px;
                 }
             }
         }

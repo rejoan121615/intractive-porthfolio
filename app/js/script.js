@@ -1096,7 +1096,6 @@ ScrollTrigger.matchMedia({
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#skills .container",
-                // markers: true,
                 start: "15% 90%",
                 end: "center center",
                 scrub: 1,

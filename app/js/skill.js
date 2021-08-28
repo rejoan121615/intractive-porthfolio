@@ -73,7 +73,6 @@ ScrollTrigger.matchMedia({
                 start: "380% 90%",
                 end: "+=120% 20%",
                 scrub: 1,
-                markers: true,
             },
         })
             .to(
@@ -172,7 +171,6 @@ ScrollTrigger.matchMedia({
                 start: "320% 90%",
                 end: "+=120% 20%",
                 scrub: 1,
-                markers: true,
             },
         })
             .to(
@@ -271,7 +269,6 @@ ScrollTrigger.matchMedia({
                 start: "290% 90%",
                 end: "+=120% 20%",
                 scrub: 1,
-                markers: true,
             },
         })
             .to(
@@ -370,7 +367,6 @@ ScrollTrigger.matchMedia({
                 start: "215% 90%",
                 end: "+=210% 0%",
                 scrub: 1,
-                markers: true,
             },
         })
             .to(
@@ -469,7 +465,6 @@ ScrollTrigger.matchMedia({
                 start: "170% 100%",
                 end: "+=650% 0%",
                 scrub: 1,
-                markers: true,
             },
         })
             .to(
@@ -666,7 +661,6 @@ ScrollTrigger.matchMedia({
                 start: "120% 80%",
                 end: "165% 0%",
                 scrub: 1,
-                markers: true,
             },
         })
             .to(
@@ -765,7 +759,6 @@ ScrollTrigger.matchMedia({
                 start: "120% 80%",
                 end: "165% 0%",
                 scrub: 1,
-                markers: true,
             },
         })
             .to(
