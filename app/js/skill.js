@@ -162,7 +162,9 @@ ScrollTrigger.matchMedia({
                     },
                 },
                 "=-0.2"
-            );
+        );
+        // list animation 
+        
     },
     "(min-width: 400px) and (max-width: 599px)": function () {
         gsap.timeline({

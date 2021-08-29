@@ -7,10 +7,12 @@
 // google fonts
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Rubik&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Hina+Mincho&display=swap');
 
 $ibm: "IBM Plex Sans", sans-serif;
 $rubik: "Rubik", sans-serif;
 $cormo: "Cormorant Garamond", serif;
+$project: 'Hina Mincho', serif;;
 
 body {
     // overflow-x: hidden;
@@ -338,16 +340,10 @@ $xxl: 1800px;
             padding-top: 120px;
         }
         .rounds {
-            padding: 10px 0px;
+            padding: 15px 0px;
             background-color: black;
-            @keyframes color {
-                from {
-                    transform: translateX(100);
-                }
-                to {
-                    transform: translateX(250);
-                }
-            }
+            display: flex;
+            
             h1 {
                 font-family: $cormo;
                 font-size: calc(
@@ -355,7 +351,19 @@ $xxl: 1800px;
                 );
                 color: white;
                 width: 410px;
-                animation: color 4s linear 3s 12 backwards;
+                letter-spacing: 3px;
+                margin-left: auto;
+                margin-right: auto;
+                display: flex;
+                .word {
+                    display: flex;
+                    .char {
+                        display: flex;
+                    }
+                }
+                .whitespace {
+                    padding: 0px 4px;
+                }
             }
         }
     }
@@ -377,18 +385,18 @@ $xxl: 1800px;
                 @include resp(600px) {
                     font-size: 0.95rem;
                 }
-                @include resp ($sm) {
+                @include resp($sm) {
                     font-size: 1rem;
                     padding: 6px 10px;
                 }
-                @include resp ($md) {
+                @include resp($md) {
                     font-size: 1.1rem;
                 }
-                @include resp  ($lg) {
+                @include resp($lg) {
                     font-size: 1.2rem;
                     padding: 8px 12px;
                 }
-                @include resp ($xl) {
+                @include resp($xl) {
                     font-size: 1.25rem;
                 }
                 @include resp($xxl) {
@@ -404,7 +412,6 @@ $xxl: 1800px;
             margin-left: auto;
             margin-right: auto;
             display: block;
-            padding-top: 45px;
             .background {
                 fill: #ddd;
             }
@@ -437,12 +444,33 @@ $xxl: 1800px;
 // works
 #works {
     padding-top: 75px;
+    @include resp($xxl) {
+        padding-top: 130px;
+    }
     .container {
         .texts {
-            @extend .sm__heading;
-            font-size: 65px;
-            text-align: center;
-            line-height: initial;
+            h1 {
+                @extend .sm__heading;
+                text-align: center;
+            }
+        }
+    }
+    // works list 
+    .works__list {
+        list-style: none;
+        padding-top: 100px;
+        .links {
+            padding: 15px 0px;
+            position: relative;
+            a {
+                text-decoration: none;
+                // text-transform: capitalize;
+                font-family: $project;
+                font-size: 2.4rem;
+                line-height: 2rem;
+                color: black;
+                display: inline-block;
+            }
         }
     }
     // intro
@@ -457,6 +485,54 @@ $xxl: 1800px;
                 color: rgb(0, 0, 0);
                 mix-blend-mode: difference;
             }
+        }
+    }
+}
+
+// contact
+#contact {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    @include resp($lg) {
+        padding-top: 75px;
+        padding-bottom: 75px;
+    }
+    @include resp($xxl) {
+        padding-top: 110px;
+        padding-bottom: 110px;
+    }
+    .container {
+        .texts {
+            h1 {
+                @extend .sm__heading;
+            }
+        }
+    }
+    .list {
+        display: flex;
+        flex-flow: column wrap;
+        padding-top: 80px;
+        div {
+            width: 100%;
+            padding: 8px;
+            background-color: #484848;
+            position: relative;
+            a {
+                text-transform: capitalize;
+                font-size: 1.2rem;
+                text-align: left;
+                text-transform: capitalize;
+                text-decoration: none;
+            }
+        }
+        .item::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
         }
     }
 }

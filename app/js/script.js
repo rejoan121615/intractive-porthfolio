@@ -262,6 +262,7 @@ ScrollTrigger.matchMedia({
                     y: 0,
                 }
             );
+        // projects list
     },
     "(min-width: 576px) and (max-width: 767px)": function (param) {
         gsap.timeline({
@@ -1093,6 +1094,7 @@ ScrollTrigger.matchMedia({
 
 ScrollTrigger.matchMedia({
     "(min-width: 0px)": function () {
+        // skills timeline
         gsap.timeline({
             scrollTrigger: {
                 trigger: "#skills .container",
@@ -1116,18 +1118,45 @@ ScrollTrigger.matchMedia({
                 },
             }
         );
-        // round animation
-        gsap.fromTo(
-            "#skills .rounds h1",
+        // works timeline
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: "#works .container",
+                start: "15% 90%",
+                end: "15% 50%",
+                scrub: 1,
+            },
+        }).fromTo(
+            "#works .texts .char",
             {
-                xPercent: 100,
+                x: 100 + "vw",
+                scale: 1.5,
+                letterSpacing: 10,
             },
             {
-                xPercent: -90,
-                duration: 10,
-                repeat: -1,
-                ease: "linear",
+                x: 0,
+                scale: 1,
+                letterSpacing: "initial",
+                stagger: {
+                    amount: 0.5,
+                },
             }
         );
+        // round animation
+        // gsap.fromTo(
+        //     "#skills .rounds h1",
+        //     {
+        //         xPercent: 100,
+        //     },
+        //     {
+        //         xPercent: -90,
+        //         duration: 10,
+        //         repeat: -1,
+        //         ease: "linear",
+        //     }
+        // );
+        // gsap.set("#skills .rounds", {
+        //     display: 'none'
+        // })
     },
 });
