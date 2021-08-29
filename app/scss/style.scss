@@ -7,12 +7,12 @@
 // google fonts
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Rubik&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Hina+Mincho&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Hina+Mincho&display=swap");
 
 $ibm: "IBM Plex Sans", sans-serif;
 $rubik: "Rubik", sans-serif;
 $cormo: "Cormorant Garamond", serif;
-$project: 'Hina Mincho', serif;;
+$project: "Hina Mincho", serif;
 
 body {
     // overflow-x: hidden;
@@ -343,7 +343,7 @@ $xxl: 1800px;
             padding: 15px 0px;
             background-color: black;
             display: flex;
-            
+
             h1 {
                 font-family: $cormo;
                 font-size: calc(
@@ -447,6 +447,13 @@ $xxl: 1800px;
     @include resp($xxl) {
         padding-top: 130px;
     }
+
+    .content {
+        .distort {
+            transform: none !important;
+        }
+    }
+
     .container {
         .texts {
             h1 {
@@ -455,7 +462,7 @@ $xxl: 1800px;
             }
         }
     }
-    // works list 
+    // works list
     .works__list {
         list-style: none;
         padding-top: 100px;
@@ -534,5 +541,43 @@ $xxl: 1800px;
             left: 0;
             top: 0;
         }
+    }
+}
+
+// marquee animation
+
+.marquee {
+    position: relative;
+    overflow: hidden;
+    --offset: 20vw;
+    --move-initial: calc(-25% + var(--offset));
+    --move-final: calc(-50% + var(--offset));
+}
+
+.marquee__inner {
+    width: fit-content;
+    display: flex;
+    position: relative;
+    transform: translate3d(var(--move-initial), 0, 0);
+    animation: marquee 1s linear infinite;
+    animation-play-state: paused;
+}
+
+.marquee span {
+    font-size: 10vw;
+    padding: 0 2vw;
+}
+
+.marquee:hover .marquee__inner {
+    animation-play-state: running;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translate3d(var(--move-initial), 0, 0);
+    }
+
+    100% {
+        transform: translate3d(var(--move-final), 0, 0);
     }
 }
