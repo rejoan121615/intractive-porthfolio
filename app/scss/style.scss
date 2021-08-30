@@ -412,6 +412,10 @@ $xxl: 1800px;
             margin-left: auto;
             margin-right: auto;
             display: block;
+            @include resp($xxl) {
+                width: 100%;
+                max-width: 1000px;
+            }
             .background {
                 fill: #ddd;
             }
@@ -500,46 +504,97 @@ $xxl: 1800px;
 #contact {
     padding-top: 50px;
     padding-bottom: 50px;
+    // @include resp ($lg) {
+    //     padding-top: 100px;
+    // }
     @include resp($lg) {
         padding-top: 75px;
         padding-bottom: 75px;
     }
-    @include resp($xxl) {
-        padding-top: 110px;
+    @include resp($xl) {
+        padding-top: 200px;
         padding-bottom: 110px;
     }
+    @include resp($xxl) {
+        padding-top: 350px;
+    }
+    // text and container
     .container {
         .texts {
             h1 {
+                text-align: center;
                 @extend .sm__heading;
+                font-size: calc(
+                    65px + (350 - 65) * ((100vw - 300px) / (1900 - 300))
+                );
+                @include resp($xs) {
+                    font-size: calc(
+                        55px + (350 - 55) * ((100vw - 300px) / (1900 - 300))
+                    );
+                }
             }
         }
     }
+
+    // sec container
+    // .sec__container {
+    //     background-color: black;
+    // }
     .list {
         display: flex;
         flex-flow: column wrap;
         padding-top: 80px;
+        @include resp($sm) {
+            padding-top: 100px;
+        }
+        @include resp($md) {
+            flex-flow: row wrap;
+        }
+        @include resp($lg) {
+            padding-top: 130px;
+        }
         div {
             width: 100%;
-            padding: 8px;
-            background-color: #484848;
+            background-color: #000000;
             position: relative;
+            padding: 35px 6px;
+            @include resp($md) {
+                padding: 45px 12px;
+                flex: 1;
+            }
+            &:first-child {
+                border-bottom: 1.5px solid white;
+                @include resp($sm) {
+                    border-width: 2.2px;
+                }
+                @include resp($md) {
+                    border: 0px;
+                    border-right: 3px solid white;
+                }
+            }
             a {
+                text-align: center;
                 text-transform: capitalize;
                 font-size: 1.2rem;
-                text-align: left;
                 text-transform: capitalize;
                 text-decoration: none;
+                display: block;
+                color: white;
+                @include resp($xs) {
+                    font-size: 1.5rem;
+                    padding-left: 20px;
+                }
+                @include resp($sm) {
+                    font-size: 2.2rem;
+                    text-align: left;
+                    padding-left: 30px;
+                }
+                @include resp($md) {
+                    font-size: 3rem;
+                    text-align: center;
+                    padding-left: 0px;
+                }
             }
-        }
-        .item::before {
-            content: "";
-            width: 100%;
-            height: 100%;
-            background-color: red;
-            position: absolute;
-            left: 0;
-            top: 0;
         }
     }
 }
@@ -651,7 +706,7 @@ a:focus {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;  
+    user-select: none;
     --marquee-width: 100vw;
     --offset: 20vw;
     --move-initial: calc(-25% + var(--offset));
@@ -659,17 +714,21 @@ a:focus {
     counter-reset: menu;
     padding-top: 45px;
     padding-bottom: 50px;
-    @include resp ($sm) {
-        padding-top: 60px;
+    @include resp($xs) {
+        padding-top: 80px;
     }
-    @include resp ($lg) {
+    @include resp($sm) {
+        padding-top: 100px;
+        padding-bottom: 65px;
+    }
+    @include resp($lg) {
         padding-top: 70px;
         padding-bottom: 70px;
     }
-    @include resp ($xl) {
+    @include resp($xl) {
         padding-top: 85px;
     }
-    @include resp ($xxl) {
+    @include resp($xxl) {
         padding-top: 100px;
     }
 }
@@ -822,4 +881,28 @@ a:focus {
     }
 }
 
-// works
+// footer style
+footer {
+    padding: 20px;
+    border-radius: 1px solid #484848;
+    @include resp($md) {
+        padding: 35px;
+        border-width: 2px;
+    }
+    @include resp($xl) {
+        padding: 45px;
+        border-width: 3px;
+    }
+    .container {
+        h5 {
+            text-align: center;
+            font-size: 1.6rem;
+            @include resp($md) {
+                font-size: 2.8rem;
+            }
+            @include resp($xl) {
+                font-size: 3.2rem;
+            }
+        }
+    }
+}
